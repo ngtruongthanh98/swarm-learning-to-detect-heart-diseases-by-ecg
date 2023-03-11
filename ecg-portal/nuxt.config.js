@@ -37,7 +37,7 @@ export default {
   modules: [],
 
   styleResources: {
-    scss: ['@/assets/styles/variables.scss'],
+    scss: ['@/assets/styles/variables.scss', '@/assets/styles/global.scss'],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
