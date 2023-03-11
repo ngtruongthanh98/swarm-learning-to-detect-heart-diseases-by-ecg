@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'swarm-learning-ecg-portal',
+    title: 'ECG Portal',
     htmlAttrs: {
       lang: 'en',
     },

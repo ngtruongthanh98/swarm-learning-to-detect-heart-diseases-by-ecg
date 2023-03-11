@@ -1,5 +1,5 @@
 {
-  "name": "swarm-learning-ecg-portal",
+  "name": "ecg-portal",
   "version": "1.0.0",
   "private": true,
   "scripts": {
