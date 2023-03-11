@@ -30,10 +30,15 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
+
+  styleResources: {
+    scss: ['@/assets/styles/variables.scss'],
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
