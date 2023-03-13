@@ -3,7 +3,9 @@
     <h1 class="text-white text-4xl mb-5">ECG Portal</h1>
     <h2 class="text-white text-2xl">
       ECG Portal uses swarm learning to analyze and predict heart issues via ECG
-      data, providing real-time evaluations with collaborating hospitals.
+      data,
+      <br />
+      providing real-time evaluations with collaborating hospitals.
     </h2>
   </div>
 </template>
