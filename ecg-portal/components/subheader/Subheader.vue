@@ -1,17 +1,23 @@
 <template>
-  <div class="m-4 p-4 text-center">
-    <VmSearch></VmSearch>
+  <div class="subheader-wrapper m-4 p-4 text-center">
+    <ecg-viewer />
   </div>
 </template>
 
 <script>
-  import VmSearch from '../search/Search';
+import EcgViewer from '../EcgViewer/EcgViewer'
 
-  export default {
-    name: 'VmSubheader',
+export default {
+  name: 'VmSubheader',
 
-    components: {
-      VmSearch
-    }
-  }
+  components: {
+    EcgViewer,
+  },
+}
 </script>
+
+<style lang="scss" scoped>
+.subheader-wrapper {
+  min-height: calc(60vh - 2rem - 9rem + 50px);
+}
+</style>
