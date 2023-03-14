@@ -1,11 +1,11 @@
 <template>
   <footer class="footer-wrapper">
-    <p class="text-gray-600">Copyright &copy; {{ year }}</p>
+    <p>Copyright &copy; {{ year }}</p>
     <a
       href="https://github.com/ngtruongthanh98"
       target="_blank"
       rel="noopener"
-      class="text-gray-600 hover:text-gray-800"
+      class="hover:text-gray-800"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -48,5 +48,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
+
+  color: $white-color;
 }
 </style>
