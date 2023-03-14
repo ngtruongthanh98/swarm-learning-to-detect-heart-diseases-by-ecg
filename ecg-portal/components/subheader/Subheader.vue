@@ -18,6 +18,6 @@ export default {
 
 <style lang="scss" scoped>
 .subheader-wrapper {
-  min-height: calc(60vh - 2rem - 9rem + 50px);
+  min-height: calc(100vh - 80px - 300px - 80px - 32px);
 }
 </style>

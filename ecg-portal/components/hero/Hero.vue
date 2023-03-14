@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 lg:p-36 hero-wrapper">
+  <div class="hero-wrapper">
     <h1 class="text-white text-4xl mb-5">ECG Portal</h1>
     <h2 class="text-white text-2xl">
       Using swarm learning to analyze and predict heart issues
@@ -12,5 +12,7 @@
 <style lang="scss" scoped>
 .hero-wrapper {
   background-color: $primary-first;
+  min-height: 300px;
+  padding: 48px;
 }
 </style>
