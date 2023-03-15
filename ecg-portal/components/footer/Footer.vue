@@ -2,7 +2,7 @@
   <footer class="footer-wrapper">
     <p>Copyright &copy; {{ year }}</p>
     <a
-      href="https://github.com/ngtruongthanh98"
+      href="https://github.com/ngtruongthanh98/swarm-learning-to-detect-heart-diseases-by-ecg"
       target="_blank"
       rel="noopener"
       class="hover:text-gray-800"
