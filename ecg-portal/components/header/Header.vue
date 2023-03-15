@@ -13,7 +13,11 @@
     </nuxt-link>
 
     <div class="flex items-center hospital-container">
-      <nuxt-link :to="{ name: 'about-ecg' }" class="about flex items-center">
+      <nuxt-link
+        :to="{ name: 'about-ecg' }"
+        class="about flex items-center"
+        exact-active-class="is-active"
+      >
         <div class="icon-ecg w-20 h-12"></div>
         <span>About ECG</span>
       </nuxt-link>
@@ -21,6 +25,7 @@
       <nuxt-link
         :to="{ name: 'analyze-ecg' }"
         class="analyse flex items-center"
+        exact-active-class="is-active"
       >
         <div class="icon-ecg w-20 h-12"></div>
         <span>Analyze ECG</span>
@@ -31,6 +36,7 @@
         :to="{ name: 'hospital-id', params: { id: hospital.id } }"
         class="hospital flex items-center"
         :key="id"
+        exact-active-class="is-active"
       >
         <div class="icon-hospital w-20 h-12"></div>
         <span>{{ hospital.name }}</span>
@@ -38,6 +44,7 @@
     </div>
   </nav>
 </template>
+
 
 <script>
 import { HOSPITAL_CONFIG } from '@/constants'
@@ -84,6 +91,10 @@ export default {
       cursor: pointer;
       background-color: $primary-third;
     }
+
+    &.is-active {
+      background-color: $primary-third;
+    }
   }
 
   .analyse {
@@ -99,6 +110,10 @@ export default {
       cursor: pointer;
       background-color: $primary-inverted;
     }
+
+    &.is-active {
+      background-color: $primary-inverted;
+    }
   }
 
   .about {
@@ -112,6 +127,10 @@ export default {
 
     &:hover {
       cursor: pointer;
+      background-color: $primary-inverted;
+    }
+
+    &.is-active {
       background-color: $primary-inverted;
     }
   }
