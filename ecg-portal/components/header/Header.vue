@@ -4,51 +4,57 @@
     role="navigation"
     aria-label="main navigation"
   >
-    <nuxt-link :to="{ name: 'index' }" class="navbar-item flex items-center">
+    <nuxt-link
+      :to="{ name: 'index' }"
+      class="app-logo navbar-item flex items-center"
+    >
       <h1 class="title w-20 h-12"></h1>
       <span>ECG Portal</span>
     </nuxt-link>
 
     <div class="flex items-center hospital-container">
-      <div class="analyse flex items-center">
+      <nuxt-link
+        :to="{ name: 'about-ecg' }"
+        class="about flex items-center"
+        exact-active-class="is-active"
+      >
         <div class="icon-ecg w-20 h-12"></div>
-        <span>ECG Analyse</span>
-      </div>
+        <span>About ECG</span>
+      </nuxt-link>
 
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Cho Ray Hospital</span>
-      </div>
+      <nuxt-link
+        :to="{ name: 'analyze-ecg' }"
+        class="analyse flex items-center"
+        exact-active-class="is-active"
+      >
+        <div class="icon-ecg w-20 h-12"></div>
+        <span>Analyze ECG</span>
+      </nuxt-link>
 
-      <div class="hospital flex items-center">
+      <nuxt-link
+        v-for="(hospital, id) in HOSPITAL_CONFIG"
+        :to="{ name: 'hospital-id', params: { id: hospital.id } }"
+        class="hospital flex items-center"
+        :key="id"
+        exact-active-class="is-active"
+      >
         <div class="icon-hospital w-20 h-12"></div>
-        <span>Bach Mai Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Tam Duc Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Viet Phap Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>115 Hospital</span>
-      </div>
+        <span>{{ hospital.name }}</span>
+      </nuxt-link>
     </div>
   </nav>
 </template>
 
+
 <script>
+import { HOSPITAL_CONFIG } from '@/constants'
 export default {
   name: 'VmHeader',
 
   data() {
-    return {}
+    return {
+      HOSPITAL_CONFIG,
+    }
   },
 
   computed: {},
@@ -61,6 +67,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.app-logo {
+  padding: 16px;
+}
+
 .title {
   background: url('../../static/heart-logo.png') no-repeat;
   background-position: 50% 50%;
@@ -81,6 +91,10 @@ export default {
       cursor: pointer;
       background-color: $primary-third;
     }
+
+    &.is-active {
+      background-color: $primary-third;
+    }
   }
 
   .analyse {
@@ -94,6 +108,29 @@ export default {
 
     &:hover {
       cursor: pointer;
+      background-color: $primary-inverted;
+    }
+
+    &.is-active {
+      background-color: $primary-inverted;
+    }
+  }
+
+  .about {
+    padding: 16px;
+
+    .icon-ecg {
+      background: url('../../static/info-icon.png') no-repeat;
+      background-position: 50% 50%;
+      background-size: 40px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $primary-inverted;
+    }
+
+    &.is-active {
       background-color: $primary-inverted;
     }
   }
