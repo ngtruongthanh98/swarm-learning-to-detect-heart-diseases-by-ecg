@@ -26,40 +26,28 @@
         <span>Analyze ECG</span>
       </nuxt-link>
 
-      <div class="hospital flex items-center">
+      <nuxt-link
+        v-for="(hospital, id) in HOSPITAL_CONFIG"
+        :to="{ name: 'hospital-id', params: { id: hospital.id } }"
+        class="hospital flex items-center"
+        :key="id"
+      >
         <div class="icon-hospital w-20 h-12"></div>
-        <span>Cho Ray Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Bach Mai Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Tam Duc Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>Viet Phap Hospital</span>
-      </div>
-
-      <div class="hospital flex items-center">
-        <div class="icon-hospital w-20 h-12"></div>
-        <span>115 Hospital</span>
-      </div>
+        <span>{{ hospital.name }}</span>
+      </nuxt-link>
     </div>
   </nav>
 </template>
 
 <script>
+import { HOSPITAL_CONFIG } from '@/constants'
 export default {
   name: 'VmHeader',
 
   data() {
-    return {}
+    return {
+      HOSPITAL_CONFIG,
+    }
   },
 
   computed: {},

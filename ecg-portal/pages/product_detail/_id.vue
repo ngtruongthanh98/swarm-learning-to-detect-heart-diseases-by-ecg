@@ -1,5 +1,5 @@
 <template>
-  <Product :detail="true" :product="product"/>
+  <Product :detail="true" :product="product" />
 </template>
 
 <script>
@@ -8,73 +8,73 @@ export default {
   name: 'product_detail-id',
 
   components: {
-    Product
+    Product,
   },
 
-  validate ({ params }) {
+  validate({ params }) {
     return /^\d+$/.test(params.id)
   },
 
-  data () {
+  data() {
     return {
       product: {},
       selected: 1,
-      quantityArray: []
-    };
+      quantityArray: [],
+    }
   },
 
-  mounted () {
-    this.product = this.$store.getters.getProductById(this.$route.params.id);
-    this.selected = this.product.quantity;
+  mounted() {
+    this.product = this.$store.getters.getProductById(this.$route.params.id)
+    this.selected = this.product.quantity
 
     for (let i = 1; i <= 20; i++) {
-      this.quantityArray.push(i);
+      this.quantityArray.push(i)
     }
   },
 
   computed: {
-    isAddedBtn () {
-      return this.product.isAddedBtn;
-    }
+    isAddedBtn() {
+      return this.product.isAddedBtn
+    },
   },
 
   methods: {
-    addToCart (id) {
+    addToCart(id) {
       let data = {
         id: id,
-        status: true
+        status: true,
       }
-      this.$store.commit('addToCart', id);
-      this.$store.commit('setAddedBtn', data);
+      this.$store.commit('addToCart', id)
+      this.$store.commit('setAddedBtn', data)
     },
-    removeFromCart (id) {
+    removeFromCart(id) {
       let data = {
         id: id,
-        status: false
+        status: false,
       }
-      this.$store.commit('removeFromCart', id);
-      this.$store.commit('setAddedBtn', data);
+      this.$store.commit('removeFromCart', id)
+      this.$store.commit('setAddedBtn', data)
     },
-    onSelectQuantity (id) {
+    onSelectQuantity(id) {
       let data = {
         id: id,
-        quantity: this.selected
+        quantity: this.selected,
       }
-      this.$store.commit('quantity', data);
+      this.$store.commit('quantity', data)
     },
-    saveToFavorite (id) {
-      let isUserLogged = this.$store.state.userInfo.isLoggedIn;
+    saveToFavorite(id) {
+      let isUserLogged = this.$store.state.userInfo.isLoggedIn
 
       if (isUserLogged) {
-        this.$store.commit('addToFavourite', id);
+        this.$store.commit('addToFavourite', id)
       } else {
-        this.$store.commit('showLoginModal', true);
+        this.$store.commit('showLoginModal', true)
       }
     },
-    removeFromFavourite (id) {
-      this.$store.commit('removeFromFavourite', id);
-    }
-  }
-};
+    removeFromFavourite(id) {
+      this.$store.commit('removeFromFavourite', id)
+    },
+  },
+}
 </script>
 
