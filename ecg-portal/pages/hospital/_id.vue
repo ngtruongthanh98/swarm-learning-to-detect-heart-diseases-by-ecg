@@ -1,6 +1,7 @@
 <template>
   <div class="hospital-page">
     <div class="title">{{ hospitalName }}</div>
+    <img :src="hospitalLogo" alt="hospital logo" class="hospital-logo" />
   </div>
 </template>
 
@@ -27,6 +28,10 @@ export default {
       const hospital = this.hospitals.find((h) => h.id === this.hospitalId)
       return hospital ? hospital.name : 'Unknown Hospital'
     },
+    hospitalLogo() {
+      const hospital = this.hospitals.find((h) => h.id === this.hospitalId)
+      return hospital ? hospital.logoPath : ''
+    },
   },
 
   mounted() {
@@ -42,10 +47,18 @@ export default {
   min-height: calc(100vh - 80px - 80px);
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .title {
     margin-top: 36px;
+    font-size: 24px;
+  }
+
+  .hospital-logo {
+    height: 150px;
+    width: 150px;
+    margin-top: 16px;
   }
 }
 </style>
