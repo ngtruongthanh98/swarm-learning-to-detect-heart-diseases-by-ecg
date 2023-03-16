@@ -38,7 +38,13 @@
         :key="id"
         exact-active-class="is-active"
       >
-        <div class="icon-hospital w-20 h-12"></div>
+        <img
+          :src="hospital.logoPath"
+          alt="hospital-logo"
+          width="40"
+          height="40"
+          class="hospital-logo"
+        />
         <span>{{ hospital.name }}</span>
       </nuxt-link>
     </div>
@@ -80,9 +86,13 @@ export default {
 .hospital-container {
   .hospital {
     padding: 16px;
+    height: 100%;
+
+    .hospital-logo {
+      margin-right: 5px;
+    }
 
     .icon-hospital {
-      background: url('../../static/hospital-icon.png') no-repeat;
       background-position: 50% 50%;
       background-size: 40px;
     }
