@@ -196,6 +196,11 @@ export default {
     padding: 16px;
     margin-top: 32px;
 
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
+
     &__item {
       display: flex;
       flex-direction: column;
@@ -219,6 +224,11 @@ export default {
     width: 50%;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 5px;
+
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
 
     &__header {
       display: flex;
@@ -272,6 +282,11 @@ export default {
 
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 5px;
+
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
 
     &__header {
       display: flex;
