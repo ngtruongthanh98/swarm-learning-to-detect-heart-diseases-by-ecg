@@ -1,5 +1,7 @@
 <template>
-  <el-button :type="type" :size="size">{{ buttonName }}</el-button>
+  <el-button :type="type" :size="size" :class="className">{{
+    buttonName
+  }}</el-button>
 </template>
 
 <script>
@@ -16,7 +18,11 @@ export default {
     },
     size: {
       type: String,
-      default: 'medium',
+      default: '',
+    },
+    className: {
+      type: String,
+      default: '',
     },
   },
 }

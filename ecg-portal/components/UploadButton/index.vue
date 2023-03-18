@@ -1,6 +1,6 @@
 <template>
   <el-upload
-    class="upload-demo"
+    :class="className"
     action="https://jsonplaceholder.typicode.com/posts/"
     :on-preview="handlePreview"
     :on-remove="handleRemove"
@@ -10,7 +10,9 @@
     :on-exceed="handleExceed"
     :file-list="fileList"
   >
-    <el-button size="small" type="primary">{{ buttonName }}</el-button>
+    <el-button :class="buttonClass" :size="size" type="primary">{{
+      buttonName
+    }}</el-button>
     <div slot="tip" class="el-upload__tip">
       {{ uploadTip }}
     </div>
@@ -42,6 +44,18 @@ export default {
       type: String,
       default: '',
     },
+    className: {
+      type: String,
+      default: '',
+    },
+    size: {
+      type: String,
+      default: '',
+    },
+    buttonClass: {
+      type: String,
+      default: '',
+    },
   },
   methods: {
     handleRemove(file, fileList) {
@@ -64,5 +78,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
