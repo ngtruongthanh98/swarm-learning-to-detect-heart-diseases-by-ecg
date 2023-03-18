@@ -86,7 +86,6 @@ export default {
 
     &.is-active {
       background-color: $primary-secondary;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
   }
 
@@ -111,7 +110,6 @@ export default {
 
     &.is-active {
       background-color: $primary-secondary;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
   }
 }
