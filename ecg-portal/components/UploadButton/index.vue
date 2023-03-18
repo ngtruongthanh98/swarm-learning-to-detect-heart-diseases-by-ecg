@@ -1,6 +1,6 @@
 <template>
   <el-upload
-    class="upload-demo"
+    :class="className"
     action="https://jsonplaceholder.typicode.com/posts/"
     :on-preview="handlePreview"
     :on-remove="handleRemove"
@@ -10,9 +10,11 @@
     :on-exceed="handleExceed"
     :file-list="fileList"
   >
-    <el-button size="small" type="primary">Click to upload</el-button>
+    <el-button :class="buttonClass" :size="size" type="primary">{{
+      buttonName
+    }}</el-button>
     <div slot="tip" class="el-upload__tip">
-      jpg/png files with a size less than 500kb
+      {{ uploadTip }}
     </div>
   </el-upload>
 </template>
@@ -22,16 +24,38 @@ export default {
   data() {
     return {
       fileList: [
-        {
-          name: 'food.jpeg',
-          url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
-        {
-          name: 'food2.jpeg',
-          url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        },
+        // {
+        //   name: 'food.jpeg',
+        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+        // },
+        // {
+        //   name: 'food2.jpeg',
+        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+        // },
       ],
     }
+  },
+  props: {
+    buttonName: {
+      type: String,
+      default: '',
+    },
+    uploadTip: {
+      type: String,
+      default: '',
+    },
+    className: {
+      type: String,
+      default: '',
+    },
+    size: {
+      type: String,
+      default: '',
+    },
+    buttonClass: {
+      type: String,
+      default: '',
+    },
   },
   methods: {
     handleRemove(file, fileList) {
@@ -54,5 +78,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
