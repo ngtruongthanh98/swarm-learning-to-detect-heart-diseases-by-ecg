@@ -4,14 +4,16 @@
     <div class="analyze-page__main">
       <div class="title">ECG Report</div>
 
-      <div class="image-container">
+      <!-- <div class="image-container">
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
           width="800px"
           class="no-data-image"
         />
-      </div>
+      </div> -->
+
+      <ecg-details class="info-container" />
 
       <div class="button-container">
         <upload-button
@@ -31,6 +33,7 @@
 import Sidebar from '@/components/Sidebar'
 import UploadButton from '@/components/UploadButton'
 import NormalButton from '@/components/NormalButton'
+import EcgDetails from '@/components/EcgDetails'
 
 export default {
   name: 'Analyze-ECG-page',
@@ -38,6 +41,7 @@ export default {
     Sidebar,
     UploadButton,
     NormalButton,
+    EcgDetails,
   },
 }
 </script>
@@ -57,7 +61,8 @@ export default {
       text-align: center;
     }
 
-    .image-container {
+    .image-container,
+    .info-container {
       margin-top: 32px;
       padding-bottom: 48px;
       display: flex;
@@ -69,6 +74,7 @@ export default {
       width: 100%;
 
       padding-left: 48px;
+      padding-bottom: 48px;
 
       .upload-btn {
         height: 40px;
