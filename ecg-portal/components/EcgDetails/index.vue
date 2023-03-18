@@ -47,7 +47,10 @@
           :key="index"
         >
           <div class="title">{{ ele.title }}</div>
-          <div class="value">{{ ele.value }}</div>
+          <div class="value">
+            <span :class="ele.additionalClass">{{ ele.value }}</span>
+            {{ ele.unit }}
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +62,10 @@
         :key="index"
       >
         <div class="title">{{ ele.title }}</div>
-        <div class="value">{{ ele.value }}</div>
+        <div class="value">
+          <span :class="ele.additionalClass">{{ ele.value }}</span>
+          {{ ele.unit }}
+        </div>
       </div>
     </div>
 
@@ -84,7 +90,8 @@
                 {{ ele.title }}
               </div>
               <div class="value">
-                {{ ele.value }}
+                <span :class="ele.additionalClass">{{ ele.value }}</span>
+                {{ ele.unit }}
               </div>
             </div>
           </div>
@@ -109,52 +116,76 @@ export default {
         {
           title: 'Risk',
           value: 'High',
+          additionalClass: '',
+          unit: '',
         },
         {
           title: 'Name',
           value: 'Hannibal',
+          additionalClass: '',
+          unit: '',
         },
         {
           title: 'Surname',
           value: 'Lecture',
+          additionalClass: '',
+          unit: '',
         },
         {
           title: 'Gender',
           value: 'M',
+          additionalClass: '',
+          unit: '',
         },
         {
           title: 'Age',
           value: '65',
+          additionalClass: '',
+          unit: '',
         },
         {
           title: 'Heart rate',
-          value: '125 bpm',
+          value: '125',
+          additionalClass: 'bold',
+          unit: 'bpm',
         },
         {
           title: 'Repository rate',
-          value: '28 bpm',
+          value: '28',
+          additionalClass: 'bold',
+          unit: 'bpm',
         },
         {
           title: 'Core temperature',
-          value: '40.3 °C',
+          value: '40.3',
+          additionalClass: 'bold',
+          unit: '°C',
         },
         {
           title: 'Oxygen saturation',
-          value: '92%',
+          value: '92',
+          additionalClass: 'bold',
+          unit: '%',
         },
       ],
       HEART_RATE_DATA_MOCK: [
         {
           title: 'Current',
-          value: '65 bpm',
+          value: '65',
+          additionalClass: 'bold',
+          unit: 'bpm',
         },
         {
           title: 'Resting',
-          value: '67 bpm',
+          value: '67',
+          additionalClass: 'bold',
+          unit: 'bpm',
         },
         {
           title: 'High',
-          value: '180 bpm',
+          value: '180',
+          additionalClass: 'bold',
+          unit: 'bpm',
         },
       ],
       RESULT_DATA_MOCK: [
@@ -211,6 +242,10 @@ export default {
 
       .value {
         font-size: 20px;
+
+        .bold {
+          font-weight: 500;
+        }
       }
     }
   }
@@ -272,6 +307,9 @@ export default {
 
       .value {
         font-size: 20px;
+        .bold {
+          font-weight: 500;
+        }
       }
     }
   }
