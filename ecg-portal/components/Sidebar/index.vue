@@ -44,8 +44,7 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
   width: 300px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0px,
-    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 
   display: flex;
   flex-direction: column;
