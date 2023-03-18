@@ -1,30 +1,32 @@
 <template>
   <div class="sidebar">
-    <nuxt-link
-      :to="{ name: 'analyze-ecg' }"
-      class="analyse flex items-center"
-      exact-active-class="is-active"
-    >
-      <div class="icon-ecg"></div>
-      <span>Analyze ECG</span>
-    </nuxt-link>
+    <div class="sidebar__container">
+      <nuxt-link
+        :to="{ name: 'analyze-ecg' }"
+        class="analyse flex items-center"
+        exact-active-class="is-active"
+      >
+        <div class="icon-ecg"></div>
+        <span>Analyze ECG</span>
+      </nuxt-link>
 
-    <nuxt-link
-      v-for="(hospital, id) in HOSPITAL_CONFIG"
-      :to="{ name: 'hospital-id', params: { id: hospital.id } }"
-      class="hospital flex items-center"
-      :key="id"
-      exact-active-class="is-active"
-    >
-      <img
-        :src="hospital.logoPath"
-        alt="hospital-logo"
-        width="40"
-        height="40"
-        class="hospital-logo"
-      />
-      <span>{{ hospital.name }}</span>
-    </nuxt-link>
+      <nuxt-link
+        v-for="(hospital, id) in HOSPITAL_CONFIG"
+        :to="{ name: 'hospital-id', params: { id: hospital.id } }"
+        class="hospital flex items-center"
+        :key="id"
+        exact-active-class="is-active"
+      >
+        <img
+          :src="hospital.logoPath"
+          alt="hospital-logo"
+          width="40"
+          height="40"
+          class="hospital-logo"
+        />
+        <span>{{ hospital.name }}</span>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -46,53 +48,58 @@ export default {
   width: 300px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 
-  display: flex;
-  flex-direction: column;
+  &__container {
+    display: flex;
+    flex-direction: column;
 
-  .analyse {
-    padding: 16px;
+    position: sticky;
+    top: $header-height;
 
-    .icon-ecg {
-      background: url('../../static/ecg-icon.png') no-repeat;
-      background-position: 50% 50%;
-      background-size: 40px;
+    .analyse {
+      padding: 16px;
 
-      width: 40px;
-      height: 40px;
-      margin-right: 5px;
+      .icon-ecg {
+        background: url('../../static/ecg-icon.png') no-repeat;
+        background-position: 50% 50%;
+        background-size: 40px;
+
+        width: 40px;
+        height: 40px;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $primary-third;
+      }
+
+      &.is-active {
+        background-color: $primary-secondary;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
     }
 
-    &:hover {
-      cursor: pointer;
-      background-color: $primary-third;
-    }
+    .hospital {
+      padding: 16px;
 
-    &.is-active {
-      background-color: $primary-secondary;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-  }
+      .hospital-logo {
+        margin-right: 5px;
+      }
 
-  .hospital {
-    padding: 16px;
+      .icon-hospital {
+        background-position: 50% 50%;
+        background-size: 40px;
+      }
 
-    .hospital-logo {
-      margin-right: 5px;
-    }
+      &:hover {
+        cursor: pointer;
+        background-color: $primary-third;
+      }
 
-    .icon-hospital {
-      background-position: 50% 50%;
-      background-size: 40px;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: $primary-third;
-    }
-
-    &.is-active {
-      background-color: $primary-secondary;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      &.is-active {
+        background-color: $primary-secondary;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
     }
   }
 }
