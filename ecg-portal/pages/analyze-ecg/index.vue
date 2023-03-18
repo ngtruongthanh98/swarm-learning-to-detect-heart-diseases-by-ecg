@@ -19,10 +19,8 @@ export default {
 
 <style lang="scss" scoped>
 .analyze-page {
-  min-height: calc(100vh - 80px - 80px);
-
+  min-height: calc(100vh - $header-height - $header-height);
   display: flex;
-  // justify-content: center;
 
   &__main {
     .title {

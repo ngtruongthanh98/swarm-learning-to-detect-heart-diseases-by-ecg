@@ -8,7 +8,7 @@
       :to="{ name: 'index' }"
       class="app-logo navbar-item flex items-center"
     >
-      <h1 class="title w-16 h-12"></h1>
+      <h1 class="icon"></h1>
       <span class="logo-title">ECG Portal</span>
     </nuxt-link>
 
@@ -27,7 +27,7 @@
         class="about flex items-center"
         exact-active-class="is-active"
       >
-        <div class="icon-ecg w-20 h-12"></div>
+        <div class="icon-ecg"></div>
         <span>About ECG</span>
       </nuxt-link>
     </div>
@@ -50,21 +50,25 @@ export default {
 .app-logo {
   padding: 16px;
 
+  .icon {
+    background: url('../../static/heart-logo.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 40px;
+    height: 40px;
+    width: 40px;
+    margin-left: 5px;
+  }
+
   .logo-title {
     font-weight: 500;
     margin-left: 4px;
   }
 }
 
-.title {
-  background: url('../../static/heart-logo.png') no-repeat;
-  background-position: 50% 50%;
-  background-size: 40px;
-}
-
 .hospital-container {
   .analyse {
     padding: 16px;
+    height: 100%;
 
     .icon-ecg {
       background: url('../../static/ecg-icon.png') no-repeat;
@@ -89,11 +93,16 @@ export default {
 
   .about {
     padding: 16px;
+    height: 100%;
 
     .icon-ecg {
       background: url('../../static/info-icon.png') no-repeat;
       background-position: 50% 50%;
       background-size: 40px;
+
+      width: 40px;
+      height: 40px;
+      margin-right: 5px;
     }
 
     &:hover {

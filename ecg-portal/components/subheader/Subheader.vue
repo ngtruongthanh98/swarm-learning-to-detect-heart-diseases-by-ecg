@@ -18,7 +18,9 @@ export default {
 
 <style lang="scss" scoped>
 .subheader-wrapper {
-  min-height: calc(100vh - 80px - 300px - 80px - 32px);
+  min-height: calc(
+    100vh - $header-height - $hero-height - $header-height - $element-32
+  );
 
   display: flex;
   align-items: center;

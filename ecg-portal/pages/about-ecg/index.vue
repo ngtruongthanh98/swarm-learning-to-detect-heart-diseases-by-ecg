@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .about-page {
-  min-height: calc(100vh - 80px - 80px);
+  min-height: calc(100vh - $header-height - $header-height);
 
   display: flex;
   flex-direction: column;
