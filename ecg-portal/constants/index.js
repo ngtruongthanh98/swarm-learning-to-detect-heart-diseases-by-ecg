@@ -21,7 +21,7 @@ export const HOSPITAL_CONFIG = [
   },
   {
     id: 5,
-    name: '115 Hospital',
+    name: "115 People's Hospital",
     logoPath: 'https://iili.io/HX6jPBj.png',
   },
 ]
