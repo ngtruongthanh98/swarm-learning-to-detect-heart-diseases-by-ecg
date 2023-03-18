@@ -50,5 +50,7 @@ export default {
   padding: 0 32px;
 
   color: $white-color;
+  position: relative;
+  z-index: 99;
 }
 </style>

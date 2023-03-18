@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import EcgViewer from '../EcgViewer/EcgViewer'
+import EcgViewer from '../EcgViewer'
 
 export default {
   name: 'VmSubheader',
