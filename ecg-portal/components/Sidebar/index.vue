@@ -46,14 +46,14 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
   width: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.75);
 
   &__container {
     display: flex;
     flex-direction: column;
 
     position: sticky;
-    top: $header-height;
+    top: 72px;
 
     .analyse {
       padding: 16px;
@@ -75,12 +75,12 @@ export default {
 
       &.is-active {
         background-color: $primary-secondary;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
     }
 
     .hospital {
       padding: 16px;
+      height: 72px;
 
       .hospital-logo {
         margin-right: 5px;
@@ -98,7 +98,6 @@ export default {
 
       &.is-active {
         background-color: $primary-secondary;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
     }
   }
