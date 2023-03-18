@@ -14,5 +14,9 @@
   background-color: $primary-first;
   min-height: 300px;
   padding: 48px;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 </style>

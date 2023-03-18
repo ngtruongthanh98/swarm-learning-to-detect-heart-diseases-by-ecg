@@ -1,17 +1,22 @@
 <template>
   <div class="hospital-page">
-    <div class="title">{{ hospitalName }}</div>
-    <img :src="hospitalLogo" alt="hospital logo" class="hospital-logo" />
+    <sidebar />
+    <div class="hospital-page__main">
+      <h1 class="title">{{ hospitalName }}</h1>
+    </div>
   </div>
 </template>
 
 <script>
 import { HOSPITAL_CONFIG } from '@/constants'
+import Sidebar from '@/components/Sidebar'
 
 export default {
   name: 'hospital-id',
 
-  components: {},
+  components: {
+    Sidebar,
+  },
 
   validate({ params }) {
     return /^\d+$/.test(params.id)
@@ -36,8 +41,6 @@ export default {
 
   mounted() {
     this.hospitalId = this.$route.params.id
-
-    console.log('hospitalId: ', this.hospitalId)
   },
 }
 </script>
@@ -47,18 +50,25 @@ export default {
   min-height: calc(100vh - 80px - 80px);
 
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  // flex-direction: column;
+  // align-items: center;
 
-  .title {
-    margin-top: 36px;
-    font-size: 24px;
-  }
+  &__main {
+    .title {
+      margin-top: 36px;
+      font-size: 24px;
+    }
 
-  .hospital-logo {
-    height: 150px;
-    width: 150px;
-    margin-top: 16px;
+    .title {
+      margin-top: 36px;
+      font-size: 24px;
+    }
+
+    .hospital-logo {
+      height: 150px;
+      width: 150px;
+      margin-top: 16px;
+    }
   }
 }
 </style>
