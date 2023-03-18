@@ -52,10 +52,8 @@ export default {
   display: flex;
 
   &__main {
-    .title {
-      margin-top: 36px;
-      font-size: 24px;
-    }
+    width: 100%;
+    background-color: pink;
 
     .title {
       margin-top: 36px;
