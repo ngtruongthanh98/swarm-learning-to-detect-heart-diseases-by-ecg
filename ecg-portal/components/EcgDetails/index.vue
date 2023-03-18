@@ -190,7 +190,7 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 5px;
     width: 100%;
     padding: 16px;
@@ -217,7 +217,7 @@ export default {
 
     padding: 16px;
     width: 50%;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 5px;
 
     &__header {
@@ -270,7 +270,7 @@ export default {
     margin-top: 32px;
     width: 100%;
 
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 5px;
 
     &__header {
