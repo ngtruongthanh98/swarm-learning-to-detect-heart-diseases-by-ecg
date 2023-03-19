@@ -10,9 +10,13 @@
     :on-exceed="handleExceed"
     :file-list="fileList"
   >
-    <el-button :class="buttonClass" :size="size" type="primary">{{
-      buttonName
-    }}</el-button>
+    <el-button
+      :class="buttonClass"
+      :size="size"
+      type="primary"
+      @click="emitClickEvent"
+      >{{ buttonName }}</el-button
+    >
     <div slot="tip" class="el-upload__tip">
       {{ uploadTip }}
     </div>
@@ -73,6 +77,9 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`Cancel the transfert of ${file.name} ?`)
+    },
+    emitClickEvent() {
+      this.$emit('click')
     },
   },
 }

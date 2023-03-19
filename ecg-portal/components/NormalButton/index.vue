@@ -1,7 +1,11 @@
 <template>
-  <el-button :type="type" :size="size" :class="className">{{
-    buttonName
-  }}</el-button>
+  <el-button
+    :type="type"
+    :size="size"
+    :class="className"
+    @click="emitClickEvent"
+    >{{ buttonName }}</el-button
+  >
 </template>
 
 <script>
@@ -23,6 +27,11 @@ export default {
     className: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    emitClickEvent() {
+      this.$emit('click')
     },
   },
 }

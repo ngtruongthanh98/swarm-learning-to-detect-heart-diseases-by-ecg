@@ -10,7 +10,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 2,
@@ -22,7 +22,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 5,
@@ -58,7 +58,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 6,
@@ -70,7 +70,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 7,
@@ -82,7 +82,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 8,
@@ -94,7 +94,7 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
+      quantity: 1,
     },
     {
       id: 9,
@@ -106,135 +106,142 @@ export const state = () => ({
       isAddedToCart: false,
       isAddedBtn: false,
       isFavourite: false,
-      quantity: 1
-    }
+      quantity: 1,
+    },
   ],
   userInfo: {
     isLoggedIn: false,
     isSignedUp: false,
     hasSearched: false,
     name: '',
-    productTitleSearched: ''
+    productTitleSearched: '',
   },
   systemInfo: {
     openLoginModal: false,
     openSignupModal: false,
-    openCheckoutModal: false
-  }
+    openCheckoutModal: false,
+  },
+  ecgDataRaw: '',
 })
 
 export const getters = {
-  productsAdded: state => {
-    return state.products.filter(el => {
-      return el.isAddedToCart;
-    });
+  productsAdded: (state) => {
+    return state.products.filter((el) => {
+      return el.isAddedToCart
+    })
   },
-  productsAddedToFavourite: state => {
-    return state.products.filter(el => {
-      return el.isFavourite;
-    });
+  productsAddedToFavourite: (state) => {
+    return state.products.filter((el) => {
+      return el.isFavourite
+    })
   },
-  getProductById: state => id => {
-    return state.products.find(product => product.id == id);
+  getProductById: (state) => (id) => {
+    return state.products.find((product) => product.id == id)
   },
-  isUserLoggedIn: state => {
-    return state.userInfo.isLoggedIn;
+  isUserLoggedIn: (state) => {
+    return state.userInfo.isLoggedIn
   },
-  isUserSignedUp: state => {
-    return state.userInfo.isSignedUp;
+  isUserSignedUp: (state) => {
+    return state.userInfo.isSignedUp
   },
-  getUserName: state => {
-    return state.userInfo.name;
+  getUserName: (state) => {
+    return state.userInfo.name
   },
-  isLoginModalOpen: state => {
-    return state.systemInfo.openLoginModal;
+  isLoginModalOpen: (state) => {
+    return state.systemInfo.openLoginModal
   },
-  isSignupModalOpen: state => {
-    return state.systemInfo.openSignupModal;
+  isSignupModalOpen: (state) => {
+    return state.systemInfo.openSignupModal
   },
-  isCheckoutModalOpen: state => {
-    return state.systemInfo.openCheckoutModal;
+  isCheckoutModalOpen: (state) => {
+    return state.systemInfo.openCheckoutModal
   },
-  quantity: state => {
-    return state.products.quantity;
-  }
+  quantity: (state) => {
+    return state.products.quantity
+  },
+  getEcgDataRaw: (state) => {
+    return state.ecgDataRaw
+  },
 }
 
 export const mutations = {
   addToCart: (state, id) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (id === el.id) {
-        el.isAddedToCart = true;
+        el.isAddedToCart = true
       }
-    });
+    })
   },
   setAddedBtn: (state, data) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (data.id === el.id) {
-        el.isAddedBtn = data.status;
+        el.isAddedBtn = data.status
       }
-    });
+    })
   },
   removeFromCart: (state, id) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (id === el.id) {
-        el.isAddedToCart = false;
+        el.isAddedToCart = false
       }
-    });
+    })
   },
-  removeProductsFromFavourite: state => {
-    state.products.filter(el => {
-      el.isFavourite = false;
-    });
+  removeProductsFromFavourite: (state) => {
+    state.products.filter((el) => {
+      el.isFavourite = false
+    })
   },
   isUserLoggedIn: (state, isUserLoggedIn) => {
-    state.userInfo.isLoggedIn = isUserLoggedIn;
+    state.userInfo.isLoggedIn = isUserLoggedIn
   },
   isUserSignedUp: (state, isSignedUp) => {
-    state.userInfo.isSignedUp = isSignedUp;
+    state.userInfo.isSignedUp = isSignedUp
   },
   setHasUserSearched: (state, hasSearched) => {
-    state.userInfo.hasSearched = hasSearched;
+    state.userInfo.hasSearched = hasSearched
   },
   setUserName: (state, name) => {
-    state.userInfo.name = name;
+    state.userInfo.name = name
   },
   setProductTitleSearched: (state, titleSearched) => {
-    state.userInfo.productTitleSearched = titleSearched;
+    state.userInfo.productTitleSearched = titleSearched
   },
   showLoginModal: (state, show) => {
-    state.systemInfo.openLoginModal = show;
+    state.systemInfo.openLoginModal = show
   },
   showSignupModal: (state, show) => {
-    state.systemInfo.openSignupModal = show;
+    state.systemInfo.openSignupModal = show
   },
   showCheckoutModal: (state, show) => {
-    state.systemInfo.openCheckoutModal = show;
+    state.systemInfo.openCheckoutModal = show
   },
   addToFavourite: (state, id) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (id === el.id) {
-        el.isFavourite = true;
+        el.isFavourite = true
       }
-    });
+    })
   },
   removeFromFavourite: (state, id) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (id === el.id) {
-        el.isFavourite = false;
+        el.isFavourite = false
       }
-    });
+    })
   },
   quantity: (state, data) => {
-    state.products.forEach(el => {
+    state.products.forEach((el) => {
       if (data.id === el.id) {
-        el.quantity = data.quantity;
+        el.quantity = data.quantity
       }
-    });
+    })
   },
   SET_USER(state, authUser) {
     state.authUser = authUser
-  }
+  },
+  setEcgDataRaw: (state, data) => {
+    state.ecgDataRaw = data
+  },
 }
 /* 
 export const actions = {
