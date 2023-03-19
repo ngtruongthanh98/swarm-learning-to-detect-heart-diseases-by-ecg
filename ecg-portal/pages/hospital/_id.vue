@@ -80,6 +80,20 @@ export default {
   methods: {
     handleUploadEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
+
+      // ! testing after recieving the result from API request
+
+      const ecgResult = {
+        normalEcg: '20',
+        abnormalEcg: '20',
+        borderlineEcg: '20',
+        OtherwiseNormalEcg: '40',
+      }
+
+      this.$store.commit('setEcgResult', {
+        id: this.hospitalId,
+        ...ecgResult,
+      })
     },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '')
