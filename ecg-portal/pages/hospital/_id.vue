@@ -84,10 +84,10 @@ export default {
       // ! testing after recieving the result from API request
 
       const ecgResult = {
-        normalEcg: '20',
-        abnormalEcg: '20',
-        borderlineEcg: '20',
-        OtherwiseNormalEcg: '40',
+        normalEcg: 20,
+        abnormalEcg: 20,
+        borderlineEcg: 20,
+        OtherwiseNormalEcg: 40,
       }
 
       this.$store.commit('setEcgResult', {
