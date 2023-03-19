@@ -122,6 +122,58 @@ export const state = () => ({
     openCheckoutModal: false,
   },
   ecgDataRaw: '',
+  hospitals: [
+    {
+      id: 1,
+      name: 'Cho Ray Hospital',
+      ecgResult: {
+        // normalEcg: '',
+        // abnormalEcg: '',
+        // borderlineEcg: '',
+        // OtherwiseNormalEcg: '',
+      },
+    },
+    {
+      id: 2,
+      name: 'Bach Mai Hospital',
+      ecgResult: {
+        // normalEcg: '',
+        // abnormalEcg: '',
+        // borderlineEcg: '',
+        // OtherwiseNormalEcg: '',
+      },
+    },
+    {
+      id: 3,
+      name: 'Tam Duc Hospital',
+      ecgEesult: {
+        // normalEcg: '',
+        // abnormalEcg: '',
+        // borderlineEcg: '',
+        // OtherwiseNormalEcg: '',
+      },
+    },
+    {
+      id: 4,
+      name: 'Viet Phap Hospital',
+      ecgResult: {
+        // normalEcg: '',
+        // abnormalEcg: '',
+        // borderlineEcg: '',
+        // OtherwiseNormalEcg: '',
+      },
+    },
+    {
+      id: 5,
+      name: "115 People's Hospital",
+      ecgResult: {
+        // normalEcg: '',
+        // abnormalEcg: '',
+        // borderlineEcg: '',
+        // OtherwiseNormalEcg: '',
+      },
+    },
+  ],
 })
 
 export const getters = {
@@ -161,6 +213,9 @@ export const getters = {
   },
   getEcgDataRaw: (state) => {
     return state.ecgDataRaw
+  },
+  getHospitalById: (state) => (id) => {
+    return state.hospitals.find((hospital) => hospital.id == id)
   },
 }
 
@@ -241,6 +296,13 @@ export const mutations = {
   },
   setEcgDataRaw: (state, data) => {
     state.ecgDataRaw = data
+  },
+  setEcgResult: (state, data) => {
+    state.hospitals.forEach((el) => {
+      if (data.id === el.id) {
+        el.ecgResult = data
+      }
+    })
   },
 }
 /* 

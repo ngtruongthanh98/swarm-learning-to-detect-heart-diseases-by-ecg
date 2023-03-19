@@ -2,18 +2,32 @@
   <div class="hospital-page">
     <sidebar />
     <div class="hospital-page__main">
-      <h1 class="title">{{ hospitalName }}</h1>
+      <h1 class="title">
+        {{ hospitalName }}
+        <span
+          ><img
+            :src="hospitalLogoPath"
+            alt="Logo"
+            width="128"
+            height="128"
+            class="logo"
+        /></span>
+      </h1>
 
       <div v-if="!this.$store.state.ecgDataRaw" class="image-container">
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
-          width="800px"
+          width="700px"
           class="no-data-image"
         />
       </div>
 
-      <ecg-details v-else class="info-container" />
+      <ecg-details
+        v-else
+        class="info-container"
+        :extended-text="hospitalName"
+      />
 
       <div class="button-container">
         <upload-button
@@ -68,7 +82,7 @@ export default {
       const hospital = this.hospitals.find((h) => h.id === this.hospitalId)
       return hospital ? hospital.name : 'Unknown Hospital'
     },
-    hospitalLogo() {
+    hospitalLogoPath() {
       const hospital = this.hospitals.find((h) => h.id === this.hospitalId)
       return hospital ? hospital.logoPath : ''
     },
@@ -80,6 +94,20 @@ export default {
   methods: {
     handleUploadEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
+
+      // ! testing after recieving the result from API request
+
+      const ecgResult = {
+        normalEcg: 20,
+        abnormalEcg: 20,
+        borderlineEcg: 20,
+        OtherwiseNormalEcg: 40,
+      }
+
+      this.$store.commit('setEcgResult', {
+        id: this.hospitalId,
+        ...ecgResult,
+      })
     },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '')
@@ -100,7 +128,14 @@ export default {
     .title {
       margin-top: 36px;
       font-size: 24px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .logo {
+        margin-top: 5px;
+      }
     }
 
     .hospital-logo {

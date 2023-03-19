@@ -37,7 +37,10 @@
           </div>
         </div>
 
-        <div class="title">ECG Results Prediction</div>
+        <div class="title">
+          ECG Results Prediction
+          <span class="sub-title">{{ '(' + extendedText + ')' }}</span>
+        </div>
       </div>
 
       <div class="result-ecg__boby">
@@ -56,15 +59,34 @@
     </div>
 
     <div class="general-info">
-      <div
-        v-for="(ele, index) in GENERAL_DATA_MOCK"
-        class="general-info__item"
-        :key="index"
-      >
-        <div class="title">{{ ele.title }}</div>
-        <div class="value">
-          <span :class="ele.additionalClass">{{ ele.value }}</span>
-          {{ ele.unit }}
+      <div class="general-info__header">
+        <div class="header-icon">
+          <div class="content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <title>medical document</title>
+              <g id="document">
+                <path
+                  d="M27.59,22.19,26,21V5.3A3.3,3.3,0,0,0,22.7,2H10.3A3.3,3.3,0,0,0,7,5.3V11H5a1,1,0,0,0-1,1V27.07A2.94,2.94,0,0,0,6.93,30H25.07A2.94,2.94,0,0,0,28,27.07V23A1,1,0,0,0,27.59,22.19ZM9,5.3A1.3,1.3,0,0,1,10.3,4H22.7A1.3,1.3,0,0,1,24,5.3V19.56L12.59,11.19A1,1,0,0,0,12,11H9ZM26,27.07a.93.93,0,0,1-.93.93H6.93A.93.93,0,0,1,6,27.07V13h5.67L26,23.51ZM12,8a1,1,0,0,1,1-1h7a1,1,0,0,1,0,2H13A1,1,0,0,1,12,8Zm9,3a1,1,0,0,1-1,1H17a1,1,0,0,1,0-2h3A1,1,0,0,1,21,11Z"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="title">General Info</div>
+      </div>
+
+      <div class="general-info__body">
+        <div
+          v-for="(ele, index) in GENERAL_DATA_MOCK"
+          class="general-info__item"
+          :key="index"
+        >
+          <div class="title">{{ ele.title }}</div>
+          <div class="value">
+            <span :class="ele.additionalClass">{{ ele.value }}</span>
+            {{ ele.unit }}
+          </div>
         </div>
       </div>
     </div>
@@ -109,6 +131,12 @@ import EcgViewer from '@/components/EcgViewer'
 export default {
   components: {
     EcgViewer,
+  },
+  props: {
+    extendedText: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -217,40 +245,8 @@ export default {
   flex-direction: column;
   padding: 0 48px;
 
+  .result-ecg,
   .general-info {
-    display: flex;
-    justify-content: space-between;
-
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-    border-radius: 5px;
-    width: 100%;
-    padding: 16px;
-    margin-top: 32px;
-
-    &:hover {
-      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    }
-
-    &__item {
-      display: flex;
-      flex-direction: column;
-
-      .title {
-        font-size: 14px;
-      }
-
-      .value {
-        font-size: 20px;
-
-        .bold {
-          font-weight: 500;
-        }
-      }
-    }
-  }
-
-  .result-ecg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -288,6 +284,11 @@ export default {
         margin-left: 16px;
         font-size: 20px;
         font-weight: 500;
+
+        .sub-title {
+          font-size: 14px;
+          font-style: italic;
+        }
       }
     }
 
@@ -311,6 +312,28 @@ export default {
           font-weight: 500;
         }
       }
+    }
+  }
+
+  .general-info {
+    margin-top: 32px;
+    width: 100%;
+
+    &__header {
+      .header-icon {
+        background-color: $primary-inverted;
+
+        svg {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+
+    &__body {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16px;
     }
   }
 
