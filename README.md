@@ -15,3 +15,9 @@ The project's tech stack includes:
 - Cloud service: GCP (or AWS)
 
 By leveraging the power of swarm learning and big data, we aim to create a model that can accurately detect heart disease and improve patient outcomes.
+
+Frontend - NuxtJS
+
+![Analyze ECG page](https://iili.io/HhBmRmg.png "Analyze page").
+
+![Hospital page](https://iili.io/HhBmM7t.png "Hospital page").
