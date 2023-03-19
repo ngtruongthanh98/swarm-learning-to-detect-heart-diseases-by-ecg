@@ -4,7 +4,7 @@
     <div class="hospital-page__main">
       <h1 class="title">{{ hospitalName }}</h1>
 
-      <div class="image-container">
+      <div v-if="!this.$store.state.ecgDataRaw" class="image-container">
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
@@ -13,15 +13,24 @@
         />
       </div>
 
+      <ecg-details v-else class="info-container" />
+
       <div class="button-container">
         <upload-button
+          v-if="!this.$store.state.ecgDataRaw"
           button-name="Click to upload"
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
           buttonClass="custom-btn"
+          @click="handleUploadEcgDataRaw"
         />
 
-        <!-- <normal-button button-name="Delete" className="delete-btn" /> -->
+        <normal-button
+          v-else
+          button-name="Delete"
+          className="delete-btn"
+          @click="handleDeleteEcgDataRaw"
+        />
       </div>
     </div>
   </div>
@@ -32,6 +41,7 @@ import { HOSPITAL_CONFIG } from '@/constants'
 import Sidebar from '@/components/Sidebar'
 import UploadButton from '@/components/UploadButton'
 import NormalButton from '@/components/NormalButton'
+import EcgDetails from '@/components/EcgDetails'
 
 export default {
   name: 'hospital-id',
@@ -40,6 +50,7 @@ export default {
     Sidebar,
     UploadButton,
     NormalButton,
+    EcgDetails,
   },
 
   validate({ params }) {
@@ -66,6 +77,14 @@ export default {
   mounted() {
     this.hospitalId = this.$route.params.id
   },
+  methods: {
+    handleUploadEcgDataRaw() {
+      this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
+    },
+    handleDeleteEcgDataRaw() {
+      this.$store.commit('setEcgDataRaw', '')
+    },
+  },
 }
 </script>
 
@@ -90,7 +109,8 @@ export default {
       margin-top: 16px;
     }
 
-    .image-container {
+    .image-container,
+    .info-container {
       margin-top: 32px;
       padding-bottom: 48px;
       display: flex;
