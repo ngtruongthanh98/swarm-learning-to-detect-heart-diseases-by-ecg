@@ -37,7 +37,10 @@
           </div>
         </div>
 
-        <div class="title">ECG Results Prediction</div>
+        <div class="title">
+          ECG Results Prediction
+          <span class="sub-title">{{ '(' + extendedText + ')' }}</span>
+        </div>
       </div>
 
       <div class="result-ecg__boby">
@@ -128,6 +131,12 @@ import EcgViewer from '@/components/EcgViewer'
 export default {
   components: {
     EcgViewer,
+  },
+  props: {
+    extendedText: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -275,6 +284,11 @@ export default {
         margin-left: 16px;
         font-size: 20px;
         font-weight: 500;
+
+        .sub-title {
+          font-size: 14px;
+          font-style: italic;
+        }
       }
     }
 

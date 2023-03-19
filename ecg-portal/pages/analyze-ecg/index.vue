@@ -8,12 +8,16 @@
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
-          width="800px"
+          width="700px"
           class="no-data-image"
         />
       </div>
 
-      <ecg-details v-else class="info-container" />
+      <ecg-details
+        v-else
+        class="info-container"
+        extended-text="Swarm Learning"
+      />
 
       <div class="button-container">
         <upload-button
