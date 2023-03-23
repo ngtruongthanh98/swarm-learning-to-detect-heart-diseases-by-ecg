@@ -124,54 +124,34 @@ export const state = () => ({
   ecgDataRaw: '',
   hospitals: [
     {
+      id: 0,
+      name: 'Swarm Learning',
+      ecgResult: {},
+    },
+    {
       id: 1,
       name: 'Cho Ray Hospital',
-      ecgResult: {
-        // normalEcg: '',
-        // abnormalEcg: '',
-        // borderlineEcg: '',
-        // OtherwiseNormalEcg: '',
-      },
+      ecgResult: {},
     },
     {
       id: 2,
       name: 'Bach Mai Hospital',
-      ecgResult: {
-        // normalEcg: '',
-        // abnormalEcg: '',
-        // borderlineEcg: '',
-        // OtherwiseNormalEcg: '',
-      },
+      ecgResult: {},
     },
     {
       id: 3,
       name: 'Tam Duc Hospital',
-      ecgEesult: {
-        // normalEcg: '',
-        // abnormalEcg: '',
-        // borderlineEcg: '',
-        // OtherwiseNormalEcg: '',
-      },
+      ecgEesult: {},
     },
     {
       id: 4,
       name: 'Viet Phap Hospital',
-      ecgResult: {
-        // normalEcg: '',
-        // abnormalEcg: '',
-        // borderlineEcg: '',
-        // OtherwiseNormalEcg: '',
-      },
+      ecgResult: {},
     },
     {
       id: 5,
       name: "115 People's Hospital",
-      ecgResult: {
-        // normalEcg: '',
-        // abnormalEcg: '',
-        // borderlineEcg: '',
-        // OtherwiseNormalEcg: '',
-      },
+      ecgResult: {},
     },
   ],
 })

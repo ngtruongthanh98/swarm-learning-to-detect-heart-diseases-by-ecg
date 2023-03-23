@@ -26,7 +26,9 @@
       <ecg-details
         v-else
         class="info-container"
-        :extended-text="hospitalName"
+        :extendedText="hospitalName"
+        :ecgResult="hospitalData.ecgResult"
+        :hospitalId="hospitalId"
       />
 
       <div class="button-container">
@@ -74,6 +76,7 @@ export default {
   data() {
     return {
       hospitalId: '',
+      hospitalData: {},
       hospitals: HOSPITAL_CONFIG,
     }
   },
@@ -90,24 +93,52 @@ export default {
 
   mounted() {
     this.hospitalId = this.$route.params.id
+    this.hospitalData = this.$store.getters.getHospitalById(
+      this.$route.params.id
+    )
   },
   methods: {
     handleUploadEcgDataRaw() {
+      // ! Handle raw data from .asc file
+
       this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
 
       // ! testing after recieving the result from API request
 
-      const ecgResult = {
-        normalEcg: 20,
-        abnormalEcg: 20,
-        borderlineEcg: 20,
-        OtherwiseNormalEcg: 40,
-      }
+      const resultList = [
+        {
+          title: 'Normal ECG',
+          value: '70',
+        },
+        {
+          title: 'Abnormal ECG',
+          value: '5',
+        },
+        {
+          title: 'Borderline ECG',
+          value: '2',
+        },
+        {
+          title: 'Otherwise normal ECG',
+          value: '23',
+        },
+      ]
+
+      const newResultList = resultList.map((item) => ({
+        title: item.title,
+        value: item.value,
+        additionalClass: 'bold',
+        unit: '%',
+      }))
 
       this.$store.commit('setEcgResult', {
         id: this.hospitalId,
-        ...ecgResult,
+        ...newResultList,
       })
+
+      this.hospitalData = this.$store.getters.getHospitalById(
+        this.$route.params.id
+      )
     },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '')

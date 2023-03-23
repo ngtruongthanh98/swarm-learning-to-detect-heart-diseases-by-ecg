@@ -45,7 +45,7 @@
 
       <div class="result-ecg__boby">
         <div
-          v-for="(ele, index) in RESULT_DATA_MOCK"
+          v-for="(ele, index) in ecgResult"
           class="result-ecg__item"
           :key="index"
         >
@@ -115,7 +115,15 @@ export default {
   props: {
     extendedText: {
       type: String,
-      default: '',
+      required: true,
+    },
+    ecgResult: {
+      type: Object,
+      required: true,
+    },
+    hospitalId: {
+      type: Number,
+      required: true,
     },
   },
   data() {
@@ -124,19 +132,27 @@ export default {
       RESULT_DATA_MOCK: [
         {
           title: 'Normal ECG',
-          value: '70%',
+          value: '70',
+          additionalClass: 'bold',
+          unit: '%',
         },
         {
           title: 'Abnormal ECG',
-          value: '5%',
+          value: '5',
+          additionalClass: 'bold',
+          unit: '%',
         },
         {
           title: 'Borderline ECG',
-          value: '2%',
+          value: '2',
+          additionalClass: 'bold',
+          unit: '%',
         },
         {
           title: 'Otherwise normal ECG',
-          value: '23%',
+          value: '23',
+          additionalClass: 'bold',
+          unit: '%',
         },
       ],
       HOSPITALS_DATA_MOCK: [
@@ -145,19 +161,27 @@ export default {
           resultList: [
             {
               title: 'Normal ECG',
-              value: '70%',
+              value: '70',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Abnormal ECG',
-              value: '5%',
+              value: '5',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Borderline ECG',
-              value: '2%',
+              value: '2',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Otherwise normal ECG',
-              value: '23%',
+              value: '23',
+              additionalClass: 'bold',
+              unit: '%',
             },
           ],
         },
@@ -166,19 +190,27 @@ export default {
           resultList: [
             {
               title: 'Normal ECG',
-              value: '70%',
+              value: '70',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Abnormal ECG',
-              value: '5%',
+              value: '5',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Borderline ECG',
-              value: '2%',
+              value: '2',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Otherwise normal ECG',
-              value: '23%',
+              value: '23',
+              additionalClass: 'bold',
+              unit: '%',
             },
           ],
         },
@@ -187,19 +219,27 @@ export default {
           resultList: [
             {
               title: 'Normal ECG',
-              value: '70%',
+              value: '70',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Abnormal ECG',
-              value: '5%',
+              value: '5',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Borderline ECG',
-              value: '2%',
+              value: '2',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Otherwise normal ECG',
-              value: '23%',
+              value: '23',
+              additionalClass: 'bold',
+              unit: '%',
             },
           ],
         },
@@ -208,19 +248,27 @@ export default {
           resultList: [
             {
               title: 'Normal ECG',
-              value: '70%',
+              value: '70',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Abnormal ECG',
-              value: '5%',
+              value: '5',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Borderline ECG',
-              value: '2%',
+              value: '2',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Otherwise normal ECG',
-              value: '23%',
+              value: '23',
+              additionalClass: 'bold',
+              unit: '%',
             },
           ],
         },
@@ -229,19 +277,27 @@ export default {
           resultList: [
             {
               title: 'Normal ECG',
-              value: '70%',
+              value: '70',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Abnormal ECG',
-              value: '5%',
+              value: '5',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Borderline ECG',
-              value: '2%',
+              value: '2',
+              additionalClass: 'bold',
+              unit: '%',
             },
             {
               title: 'Otherwise normal ECG',
-              value: '23%',
+              value: '23',
+              additionalClass: 'bold',
+              unit: '%',
             },
           ],
         },
@@ -327,17 +383,12 @@ export default {
       // },
     }
   },
-  props: {
-    extendedText: {
-      type: String,
-      default: '',
-    },
-  },
   methods: {
     onClickViewDetails() {
       this.isCollapsed = !this.isCollapsed
     },
   },
+  mounted() {},
 }
 </script>
 
