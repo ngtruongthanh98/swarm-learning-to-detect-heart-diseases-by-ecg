@@ -2,51 +2,66 @@
   <client-only v-if="pieChartData" placeholder="Loading...">
     <PieChart
       :chartData="pieChartData"
-      :options="[
-        {
-          hoverOffset: 4,
-          rotation: 90,
-          cutout: 10,
-          hoverOffset: 30,
-          hoverBorderWidth: 20,
-        },
-      ]"
-      :height="90"
-      :width="90"
+      :chart-options="chartOptions"
+      :chart-data="chartData"
+      :chart-id="chartId"
+      :dataset-id-key="datasetIdKey"
+      :plugins="plugins"
+      :css-classes="cssClasses"
+      :styles="styles"
+      :width="width"
+      :height="height"
     />
   </client-only>
 </template>
 
 <script>
 export default {
+  props: {
+    chartId: {
+      type: String,
+      default: 'pie-chart',
+    },
+    datasetIdKey: {
+      type: String,
+      default: 'label',
+    },
+    width: {
+      type: Number,
+      default: 300,
+    },
+    height: {
+      type: Number,
+      default: 300,
+    },
+    cssClasses: {
+      default: '',
+      type: String,
+    },
+    styles: {
+      type: Object,
+      default: () => {},
+    },
+    plugins: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       pieChartData: {
         labels: [
-          '2019-06',
-          '2019-07',
-          '2019-08',
-          '2019-09',
-          '2019-10',
-          '2019-11',
+          'Normal ECG',
+          'Abnormal ECG',
+          'Borderline ECG',
+          'Otherwise normal ECG',
         ],
         datasets: [
           {
             label: 'Visualization',
-            data: [72, 131, 12, 3, 4, 55],
-            backgroundColor: [
-              '#99aa00',
-              '#aabbee',
-              '#990000',
-              '#99ff00',
-              '#994400',
-              '#9900ff',
-            ],
+            data: [70, 5, 2, 23],
+            backgroundColor: ['#017DD3', '#ED7D28', '#D23A1D', '#F5E18F'],
             borderColor: 'rgba(255, 255, 255, 1)',
-            borderWidth: 2,
-            radius: 240,
-            hoverBackgroundColor: 'rgba(100, 0, 0, 0.5)',
-            hoverOffset: 35,
           },
         ],
       },

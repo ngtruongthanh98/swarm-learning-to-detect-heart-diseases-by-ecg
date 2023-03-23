@@ -1,122 +1,122 @@
 <template>
-  <div class="result-ecg">
-    <div class="result-ecg__header">
-      <div class="header-icon">
-        <div class="content">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="16"
-            height="16"
-          >
-            <defs>
-              <linearGradient
-                id="b"
-                x1="-1483.396"
-                x2="-1155.767"
-                y1="1056.787"
-                y2="1056.787"
-                gradientUnits="userSpaceOnUse"
-                xlink:href="#a"
+  <div class="result-ecg__container">
+    <div class="result-ecg">
+      <div class="result-ecg__header">
+        <div class="header-icon">
+          <div class="content">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="16"
+              height="16"
+            >
+              <defs>
+                <linearGradient
+                  id="b"
+                  x1="-1483.396"
+                  x2="-1155.767"
+                  y1="1056.787"
+                  y2="1056.787"
+                  gradientUnits="userSpaceOnUse"
+                  xlink:href="#a"
+                />
+                <linearGradient id="a">
+                  <stop offset="0" stop-color="#fcd635" />
+                  <stop offset="1" stop-color="#f7a928" />
+                </linearGradient>
+              </defs>
+              <path
+                fill="url(#b)"
+                d="M-1220 1212.362c-11.656 8.326-86.446-44.452-100.77-44.568-14.324-.115-89.956 51.449-101.476 42.936-11.52-8.513 15.563-95.952 11.247-109.61-4.316-13.658-76.729-69.655-72.193-83.242 4.537-13.587 96.065-14.849 107.721-23.175 11.656-8.325 42.535-94.497 56.86-94.382 14.323.116 43.807 86.775 55.327 95.288 11.52 8.512 103.017 11.252 107.334 24.91 4.316 13.658-68.99 68.479-73.527 82.066-4.536 13.587 21.133 101.451 9.477 109.777z"
+                color="#000"
+                overflow="visible"
+                transform="matrix(.04574 0 0 .04561 68.85 -40.34)"
+                style="marker: none"
               />
-              <linearGradient id="a">
-                <stop offset="0" stop-color="#fcd635" />
-                <stop offset="1" stop-color="#f7a928" />
-              </linearGradient>
-            </defs>
-            <path
-              fill="url(#b)"
-              d="M-1220 1212.362c-11.656 8.326-86.446-44.452-100.77-44.568-14.324-.115-89.956 51.449-101.476 42.936-11.52-8.513 15.563-95.952 11.247-109.61-4.316-13.658-76.729-69.655-72.193-83.242 4.537-13.587 96.065-14.849 107.721-23.175 11.656-8.325 42.535-94.497 56.86-94.382 14.323.116 43.807 86.775 55.327 95.288 11.52 8.512 103.017 11.252 107.334 24.91 4.316 13.658-68.99 68.479-73.527 82.066-4.536 13.587 21.133 101.451 9.477 109.777z"
-              color="#000"
-              overflow="visible"
-              transform="matrix(.04574 0 0 .04561 68.85 -40.34)"
-              style="marker: none"
-            />
-          </svg>
+            </svg>
+          </div>
         </div>
-      </div>
 
-      <div class="title">
-        ECG Results Prediction
-        <span class="sub-title">{{ '(' + extendedText + ')' }}</span>
-      </div>
-    </div>
-
-    <div class="result-ecg__boby">
-      <div
-        v-for="(ele, index) in RESULT_DATA_MOCK"
-        class="result-ecg__item"
-        :key="index"
-      >
-        <div class="title">{{ ele.title }}</div>
-        <div class="value">
-          <span :class="ele.additionalClass">{{ ele.value }}</span>
-          {{ ele.unit }}
-        </div>
-      </div>
-    </div>
-
-    <!-- <client-only v-if="pieChartData" placeholder="Loading...">
-      <PieChart
-        :chartData="pieChartData"
-        :options="[
-          {
-            hoverOffset: 4,
-            rotation: 90,
-            cutout: 10,
-            hoverOffset: 30,
-            hoverBorderWidth: 20,
-          },
-        ]"
-        :height="90"
-        :width="90"
-      />
-    </client-only> -->
-
-    <pie-chart />
-
-    <div class="button-container">
-      <el-button type="primary" round @click="onClickViewDetails">{{
-        isCollapsed ? 'View more' : 'View less'
-      }}</el-button>
-    </div>
-
-    <div v-if="!isCollapsed" class="hospital-details">
-      <div
-        v-for="(ele, index) in HOSPITALS_DATA_MOCK"
-        class="hospital-details__item"
-        :key="index"
-      >
         <div class="title">
-          {{ ele.hospitalName }}
+          ECG Results Prediction
+          <span class="sub-title">{{ '(' + extendedText + ')' }}</span>
         </div>
-        <div class="hospital">
-          <div
-            v-for="(item, id) in ele.resultList"
-            class="hospital__item"
-            :key="id"
-          >
-            <div class="attribute">
-              {{ item.title }}
-            </div>
+      </div>
 
-            <div class="value">
-              <span :class="item.additionalClass">{{ item.value }}</span>
-              {{ item.unit }}
+      <div class="result-ecg__boby">
+        <div
+          v-for="(ele, index) in RESULT_DATA_MOCK"
+          class="result-ecg__item"
+          :key="index"
+        >
+          <div class="title">{{ ele.title }}</div>
+          <div class="value">
+            <span :class="ele.additionalClass">{{ ele.value }}</span>
+            {{ ele.unit }}
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <el-button type="primary" round @click="onClickViewDetails">{{
+          isCollapsed ? 'View more' : 'View less'
+        }}</el-button>
+      </div>
+
+      <div v-if="!isCollapsed" class="hospital-details">
+        <div
+          v-for="(ele, index) in HOSPITALS_DATA_MOCK"
+          class="hospital-details__item"
+          :key="index"
+        >
+          <div class="title">
+            {{ ele.hospitalName }}
+          </div>
+          <div class="hospital">
+            <div
+              v-for="(item, id) in ele.resultList"
+              class="hospital__item"
+              :key="id"
+            >
+              <div class="attribute">
+                {{ item.title }}
+              </div>
+
+              <div class="value">
+                <span :class="item.additionalClass">{{ item.value }}</span>
+                {{ item.unit }}
+              </div>
+            </div>
+          </div>
+
+          <div class="box-container">
+            <div class="chart-box">
+              <div class="chart-name">Predicted result</div>
+              <pie-chart />
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="chart-container">
+      <div class="chart-name">Overall result</div>
+      <pie-chart />
+    </div>
   </div>
 </template>
 
 <script>
-import PieChart from '../Chart/PieChart'
-
+import PieChart from '@/components/Chart/PieChart'
 export default {
   components: {
     PieChart,
+  },
+  props: {
+    extendedText: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -342,114 +342,165 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.result-ecg {
+.result-ecg__container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-  padding: 16px;
-  width: 50%;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-  border-radius: 5px;
-
-  &:hover {
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-
-    .header-icon {
-      background-color: $error-color;
-      width: 48px;
-      height: 48px;
-      border-radius: 5px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .content {
-        color: white;
-      }
-    }
-
-    .title {
-      margin-left: 16px;
-      font-size: 20px;
-      font-weight: 500;
-
-      .sub-title {
-        font-size: 14px;
-        font-style: italic;
-      }
-    }
-  }
-
-  &__boby {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-  }
-
-  &__item {
+  .result-ecg {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
-    .title {
-      font-size: 14px;
+    padding: 16px;
+    width: 50%;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    border-radius: 5px;
+    margin-right: 16px;
+
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     }
 
-    .value {
-      font-size: 20px;
-      .bold {
-        font-weight: 500;
+    &__header {
+      display: flex;
+      align-items: center;
+
+      .header-icon {
+        background-color: $error-color;
+        width: 48px;
+        height: 48px;
+        border-radius: 5px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .content {
+          color: white;
+        }
       }
-    }
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 16px;
-  }
-
-  .hospital-details {
-    overflow: hidden;
-    transition: height 200ms;
-
-    &__item {
-      margin-top: 24px;
-      border-bottom: 1px solid black;
 
       .title {
+        margin-left: 16px;
+        font-size: 20px;
         font-weight: 500;
+
+        .sub-title {
+          font-size: 14px;
+          font-style: italic;
+        }
+      }
+    }
+
+    &__boby {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 14px;
       }
 
-      .hospital {
+      .value {
+        font-size: 20px;
+        .bold {
+          font-weight: 500;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+
+    .hospital-details {
+      overflow: hidden;
+      transition: height 200ms;
+
+      &__item {
+        margin-top: 24px;
+        border-bottom: 1px solid black;
         display: flex;
-        justify-content: space-between;
-        padding-top: 8px;
-        padding-bottom: 16px;
+        flex-direction: column;
 
-        &__item {
+        &:first-child {
+          border-top: 1px solid black;
+          padding-top: 16px;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .title {
+          font-weight: 500;
+        }
+
+        .hospital {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
+          padding-top: 8px;
+          padding-bottom: 16px;
 
-          .attribute {
-            font-size: 14px;
-          }
+          &__item {
+            display: flex;
+            flex-direction: column;
 
-          .value {
-            font-size: 20px;
-            .bold {
-              font-weight: 500;
+            .attribute {
+              font-size: 14px;
+            }
+
+            .value {
+              font-size: 20px;
+              .bold {
+                font-weight: 500;
+              }
             }
           }
         }
       }
+
+      .box-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .chart-box {
+          width: 50%;
+          border-radius: 5px;
+          padding: 16px;
+          height: fit-content;
+          width: 300px;
+
+          .chart-name {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .chart-container {
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    border-radius: 5px;
+    padding: 16px;
+    height: fit-content;
+    margin-left: 16px;
+
+    &:hover {
+      box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    }
+
+    .chart-name {
+      text-align: center;
     }
   }
 }
