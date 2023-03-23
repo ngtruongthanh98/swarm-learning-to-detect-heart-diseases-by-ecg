@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <div class="button-container">
+      <div v-if="isShowViewMore" class="button-container">
         <el-button type="primary" round @click="onClickViewDetails">{{
           isCollapsed ? 'View more' : 'View less'
         }}</el-button>
@@ -124,6 +124,9 @@ export default {
     hospitalId: {
       type: Number,
       required: true,
+    },
+    isShowViewMore: {
+      type: Boolean,
     },
   },
   data() {

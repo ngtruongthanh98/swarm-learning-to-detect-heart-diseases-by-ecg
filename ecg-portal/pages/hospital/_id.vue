@@ -14,7 +14,7 @@
         /></span>
       </h1>
 
-      <div v-if="!this.$store.state.ecgDataRaw" class="image-container">
+      <div v-if="isEmpty(hospitalData.ecgResult)" class="image-container">
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
@@ -29,11 +29,12 @@
         :extendedText="hospitalName"
         :ecgResult="hospitalData.ecgResult"
         :hospitalId="hospitalId"
+        :isShowViewMore="isShowViewMore"
       />
 
       <div class="button-container">
         <upload-button
-          v-if="!this.$store.state.ecgDataRaw"
+          v-if="isEmpty(hospitalData.ecgResult)"
           button-name="Click to upload"
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
@@ -58,6 +59,7 @@ import Sidebar from '@/components/Sidebar'
 import UploadButton from '@/components/UploadButton'
 import NormalButton from '@/components/NormalButton'
 import EcgDetails from '@/components/EcgDetails'
+import { isEmpty } from 'lodash'
 
 export default {
   name: 'hospital-id',
@@ -77,6 +79,7 @@ export default {
     return {
       hospitalId: '',
       hospitalData: {},
+      isShowViewMore: false,
       hospitals: HOSPITAL_CONFIG,
     }
   },
@@ -98,6 +101,7 @@ export default {
     )
   },
   methods: {
+    isEmpty,
     handleUploadEcgDataRaw() {
       // ! Handle raw data from .asc file
 
@@ -142,6 +146,8 @@ export default {
     },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '')
+
+      this.$store.commit('resetEcgResult', this.$route.params.id)
     },
   },
 }

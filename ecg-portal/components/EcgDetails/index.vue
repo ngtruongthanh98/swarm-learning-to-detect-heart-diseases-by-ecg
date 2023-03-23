@@ -4,6 +4,7 @@
       :extendedText="extendedText"
       :ecgResult="ecgResult"
       :hospitalId="hospitalId"
+      :isShowViewMore="isShowViewMore"
     />
 
     <div class="general-info">
@@ -94,6 +95,9 @@ export default {
     hospitalId: {
       type: Number,
       required: true,
+    },
+    isShowViewMore: {
+      type: Boolean,
     },
   },
   data() {

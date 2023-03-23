@@ -284,6 +284,13 @@ export const mutations = {
       }
     })
   },
+  resetEcgResult: (state, id) => {
+    state.hospitals.forEach((el) => {
+      if (id === el.id) {
+        el.ecgResult = {}
+      }
+    })
+  },
 }
 /* 
 export const actions = {

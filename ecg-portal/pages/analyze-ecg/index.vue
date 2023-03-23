@@ -4,7 +4,7 @@
     <div class="analyze-page__main">
       <div class="title">ECG Report</div>
 
-      <div v-if="!this.$store.state.ecgDataRaw" class="image-container">
+      <div v-if="isEmpty(hospitalData.ecgResult)" class="image-container">
         <img
           src="@/static/images/analyze-pic.jpg"
           alt="No data image"
@@ -19,11 +19,12 @@
         extendedText="Swarm Learning"
         :ecgResult="hospitalData.ecgResult"
         :hospitalId="hospitalId"
+        :isShowViewMore="isShowViewMore"
       />
 
       <div class="button-container">
         <upload-button
-          v-if="!this.$store.state.ecgDataRaw"
+          v-if="isEmpty(hospitalData.ecgResult)"
           button-name="Click to upload"
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
@@ -47,6 +48,7 @@ import Sidebar from '@/components/Sidebar'
 import UploadButton from '@/components/UploadButton'
 import NormalButton from '@/components/NormalButton'
 import EcgDetails from '@/components/EcgDetails'
+import { isEmpty } from 'lodash'
 
 export default {
   name: 'Analyze-ECG-page',
@@ -60,12 +62,14 @@ export default {
     return {
       hospitalData: {},
       hospitalId: 0,
+      isShowViewMore: true,
     }
   },
   mounted() {
     this.hospitalData = this.$store.getters.getHospitalById(0)
   },
   methods: {
+    isEmpty,
     handleUploadEcgDataRaw() {
       // ! Handle raw data from .asc file
 
@@ -106,6 +110,8 @@ export default {
     },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', '')
+
+      this.$store.commit('resetEcgResult', 0)
     },
   },
 }
