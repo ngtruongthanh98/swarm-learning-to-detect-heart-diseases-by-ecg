@@ -55,13 +55,49 @@
         </div>
       </div>
     </div>
+
+    <div class="button-container">
+      <el-button type="primary" round @click="onClickViewDetails">{{
+        isCollapsed ? 'View more' : 'View less'
+      }}</el-button>
+    </div>
+
+    <div v-if="!isCollapsed" class="hospital-details">
+      <div
+        v-for="(ele, index) in HOSPITALS_DATA_MOCK"
+        class="hospital-details__item"
+        :key="index"
+      >
+        <div class="title">
+          {{ ele.hospitalName }}
+        </div>
+        <div class="hospital">
+          <div
+            v-for="(item, id) in ele.resultList"
+            class="hospital__item"
+            :key="id"
+          >
+            <div class="attribute">
+              {{ item.title }}
+            </div>
+
+            <div class="value">
+              <span :class="item.additionalClass">{{ item.value }}</span>
+              {{ item.unit }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  components: {},
   data() {
     return {
+      isCollapsed: true,
       RESULT_DATA_MOCK: [
         {
           title: 'Normal ECG',
@@ -80,12 +116,124 @@ export default {
           value: '23%',
         },
       ],
+      HOSPITALS_DATA_MOCK: [
+        {
+          hospitalName: 'Cho Ray Hospital',
+          resultList: [
+            {
+              title: 'Normal ECG',
+              value: '70%',
+            },
+            {
+              title: 'Abnormal ECG',
+              value: '5%',
+            },
+            {
+              title: 'Borderline ECG',
+              value: '2%',
+            },
+            {
+              title: 'Otherwise normal ECG',
+              value: '23%',
+            },
+          ],
+        },
+        {
+          hospitalName: 'Bach Mai Hospital',
+          resultList: [
+            {
+              title: 'Normal ECG',
+              value: '70%',
+            },
+            {
+              title: 'Abnormal ECG',
+              value: '5%',
+            },
+            {
+              title: 'Borderline ECG',
+              value: '2%',
+            },
+            {
+              title: 'Otherwise normal ECG',
+              value: '23%',
+            },
+          ],
+        },
+        {
+          hospitalName: 'Tam Duc Hospital',
+          resultList: [
+            {
+              title: 'Normal ECG',
+              value: '70%',
+            },
+            {
+              title: 'Abnormal ECG',
+              value: '5%',
+            },
+            {
+              title: 'Borderline ECG',
+              value: '2%',
+            },
+            {
+              title: 'Otherwise normal ECG',
+              value: '23%',
+            },
+          ],
+        },
+        {
+          hospitalName: 'Viet Phap Hospital',
+          resultList: [
+            {
+              title: 'Normal ECG',
+              value: '70%',
+            },
+            {
+              title: 'Abnormal ECG',
+              value: '5%',
+            },
+            {
+              title: 'Borderline ECG',
+              value: '2%',
+            },
+            {
+              title: 'Otherwise normal ECG',
+              value: '23%',
+            },
+          ],
+        },
+        {
+          hospitalName: "115 People's Hospital",
+          resultList: [
+            {
+              title: 'Normal ECG',
+              value: '70%',
+            },
+            {
+              title: 'Abnormal ECG',
+              value: '5%',
+            },
+            {
+              title: 'Borderline ECG',
+              value: '2%',
+            },
+            {
+              title: 'Otherwise normal ECG',
+              value: '23%',
+            },
+          ],
+        },
+      ],
     }
   },
   props: {
     extendedText: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    onClickViewDetails() {
+      this.isCollapsed = !this.isCollapsed
     },
   },
 }
@@ -156,6 +304,49 @@ export default {
       font-size: 20px;
       .bold {
         font-weight: 500;
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+
+  .hospital-details {
+    overflow: hidden;
+    transition: height 200ms;
+
+    &__item {
+      margin-top: 24px;
+      border-bottom: 1px solid black;
+
+      .title {
+        font-weight: 500;
+      }
+
+      .hospital {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+        padding-bottom: 16px;
+
+        &__item {
+          display: flex;
+          flex-direction: column;
+
+          .attribute {
+            font-size: 14px;
+          }
+
+          .value {
+            font-size: 20px;
+            .bold {
+              font-weight: 500;
+            }
+          }
+        }
       }
     }
   }
