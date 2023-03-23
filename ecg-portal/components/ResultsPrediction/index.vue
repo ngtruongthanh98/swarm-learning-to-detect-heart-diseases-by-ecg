@@ -56,6 +56,25 @@
       </div>
     </div>
 
+    <!-- <client-only v-if="pieChartData" placeholder="Loading...">
+      <PieChart
+        :chartData="pieChartData"
+        :options="[
+          {
+            hoverOffset: 4,
+            rotation: 90,
+            cutout: 10,
+            hoverOffset: 30,
+            hoverBorderWidth: 20,
+          },
+        ]"
+        :height="90"
+        :width="90"
+      />
+    </client-only> -->
+
+    <pie-chart />
+
     <div class="button-container">
       <el-button type="primary" round @click="onClickViewDetails">{{
         isCollapsed ? 'View more' : 'View less'
@@ -93,8 +112,12 @@
 </template>
 
 <script>
+import PieChart from '../Chart/PieChart'
+
 export default {
-  components: {},
+  components: {
+    PieChart,
+  },
   data() {
     return {
       isCollapsed: true,
@@ -223,6 +246,85 @@ export default {
           ],
         },
       ],
+      chartData: {
+        datasets: [
+          {
+            label: 'Title',
+            data: [45, 55, 48, 35, 12],
+          },
+        ],
+      },
+      // pieChartData: {
+      //   labels: [
+      //     '2019-06',
+      //     '2019-07',
+      //     '2019-08',
+      //     '2019-09',
+      //     '2019-10',
+      //     '2019-11',
+      //   ],
+      //   datasets: [
+      //     {
+      //       label: 'Visualization',
+      //       data: [72, 131, 12, 3, 4, 55],
+      //       backgroundColor: [
+      //         '#99aa00',
+      //         '#aabbee',
+      //         '#990000',
+      //         '#99ff00',
+      //         '#994400',
+      //         '#9900ff',
+      //       ],
+      //       borderColor: 'rgba(255, 255, 255, 1)',
+      //       borderWidth: 2,
+      //       radius: 240,
+      //       hoverBackgroundColor: 'rgba(100, 0, 0, 0.5)',
+      //       hoverOffset: 35,
+      //     },
+      //   ],
+      // },
+      // barChartOptions: {
+      //   responsive: true,
+      //   maintainAspectRatio: false,
+      //   pointStyle: 'star',
+      //   barThickness: 3,
+      //   hoverOffset: 4,
+      //   legend: {
+      //     display: true,
+      //     title: 'Pie Chart Samples',
+      //   },
+      //   title: {
+      //     display: true,
+      //     text: 'Customer analytics data',
+      //     fontSize: 24,
+      //     fontColor: '#6b7280',
+      //   },
+      //   tooltips: {
+      //     backgroundColor: '#17BF62',
+      //   },
+      //   // scales: {
+      //   //   xAxes: [
+      //   //     {
+      //   //       gridLines: {
+      //   //         display: true
+      //   //       }
+      //   //     }
+      //   //   ],
+      //   //   yAxes: [
+      //   //     {
+      //   //       ticks: {
+      //   //         beginAtZero: true,
+      //   //         max: 7,
+      //   //         min: 0,
+      //   //         stepSize: 1
+      //   //       },
+      //   //       gridLines: {
+      //   //         display: true
+      //   //       }
+      //   //     }
+      //   //   ]
+      //   // }
+      // },
     }
   },
   props: {
