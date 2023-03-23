@@ -1,6 +1,11 @@
 <template>
   <div class="ecg-details-container">
-    <results-prediction :extended-text="extendedText" />
+    <results-prediction
+      :extendedText="extendedText"
+      :ecgResult="ecgResult"
+      :hospitalId="hospitalId"
+      :isShowViewMore="isShowViewMore"
+    />
 
     <div class="general-info">
       <div class="general-info__header">
@@ -83,6 +88,17 @@ export default {
       type: String,
       default: '',
     },
+    ecgResult: {
+      type: Object,
+      required: true,
+    },
+    hospitalId: {
+      type: Number,
+      required: true,
+    },
+    isShowViewMore: {
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -162,26 +178,9 @@ export default {
           unit: 'bpm',
         },
       ],
-      RESULT_DATA_MOCK: [
-        {
-          title: 'Normal ECG',
-          value: '70%',
-        },
-        {
-          title: 'Abnormal ECG',
-          value: '5%',
-        },
-        {
-          title: 'Borderline ECG',
-          value: '2%',
-        },
-        {
-          title: 'Otherwise normal ECG',
-          value: '23%',
-        },
-      ],
     }
   },
+  mouted() {},
 }
 </script>
 
