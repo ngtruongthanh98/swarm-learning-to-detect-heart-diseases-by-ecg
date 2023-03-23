@@ -1117,11 +1117,13 @@
     postcss-value-parser "^4.2.0"
 
 "@csstools/postcss-trigonometric-functions@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@csstools/postcss-trigonometric-functions/-/postcss-trigonometric-functions-2.0.1.tgz#2ecede7066187cf08423f8318ef5796cda75351f"
-  integrity sha512-uGmmVWGHozyWe6+I4w321fKUC034OB1OYW0ZP4ySHA23n+r9y93K+1yrmW+hThpSfApKhaWySoD4I71LLlFUYQ==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-trigonometric-functions/-/postcss-trigonometric-functions-2.1.0.tgz#5a489975d445b9e79c6cb5f0f01ae711ec86639d"
+  integrity sha512-Ly7YczO+QdnByYeGqlppJoA2Tb2vsFfj5gSrszPTXJ+/4g3nnEZnG0VSeTK/WA8y7fzyL/qVNkkdEeOnruNWFQ==
   dependencies:
-    postcss-value-parser "^4.2.0"
+    "@csstools/css-calc" "^1.0.0"
+    "@csstools/css-parser-algorithms" "^2.0.1"
+    "@csstools/css-tokenizer" "^2.0.1"
 
 "@csstools/postcss-unset-value@^2.0.0":
   version "2.0.1"
@@ -1129,9 +1131,9 @@
   integrity sha512-oJ9Xl29/yU8U7/pnMJRqAZd4YXNCfGEdcP4ywREuqm/xMqcgDNDppYRoCGDt40aaZQIEKBS79LytUDN/DHf0Ew==
 
 "@csstools/selector-specificity@^2.0.0", "@csstools/selector-specificity@^2.0.1", "@csstools/selector-specificity@^2.0.2":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
-  integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
+  integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
@@ -1758,9 +1760,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "18.15.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.3.tgz#f0b991c32cfc6a4e7f3399d6cb4b8cf9a0315014"
-  integrity sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==
+  version "18.15.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.15.5.tgz#3af577099a99c61479149b716183e70b5239324a"
+  integrity sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -3223,9 +3225,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001449, caniuse-lite@^1.0.30001464, caniuse-lite@^1.0.30001467:
-  version "1.0.30001467"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001467.tgz#1afc9c16ed61f50dd87139da87ca43a3e0051c77"
-  integrity sha512-cEdN/5e+RPikvl9AHm4uuLXxeCNq8rFsQ+lPHTfe/OtypP3WwnVVbjn+6uBV7PaFL6xUFzTh+sSCOz1rKhcO+Q==
+  version "1.0.30001469"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001469.tgz#3dd505430c8522fdc9f94b4a19518e330f5c945a"
+  integrity sha512-Rcp7221ScNqQPP3W+lVOYDyjdR6dC+neEQCttoNr5bAyz54AboB4iwpnWgyi8P4YUsPybVzT4LgWiBbI3drL4g==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.4.0"
@@ -3266,6 +3268,34 @@ chardet@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
+
+chart.js@^2.3.0:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
+  integrity sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==
+  dependencies:
+    chartjs-color "^2.1.0"
+    moment "^2.10.2"
+
+chart.js@^3.8.2:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.9.1.tgz#3abf2c775169c4c71217a107163ac708515924b8"
+  integrity sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w==
+
+chartjs-color-string@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz#1df096621c0e70720a64f4135ea171d051402f71"
+  integrity sha512-TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==
+  dependencies:
+    color-name "^1.0.0"
+
+chartjs-color@^2.1.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.4.1.tgz#6118bba202fe1ea79dd7f7c0f9da93467296c3b0"
+  integrity sha512-haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==
+  dependencies:
+    chartjs-color-string "^0.6.0"
+    color-convert "^1.9.3"
 
 check-types@^8.0.3:
   version "8.0.3"
@@ -4591,9 +4621,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.4.284:
-  version "1.4.333"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.333.tgz#ebb21f860f8a29923717b06ec0cb54e77ed34c04"
-  integrity sha512-YyE8+GKyGtPEP1/kpvqsdhD6rA/TP1DUFDN4uiU/YI52NzDxmwHkEb3qjId8hLBa5siJvG0sfC3O66501jMruQ==
+  version "1.4.336"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.336.tgz#3e97b6752f76d24565df545a1f36bfd3aea34ae3"
+  integrity sha512-yLaoSY/ngjgRpEGU4ueeW0vlj456idQBn74r6s1yutoOIadvd7rwt05TGenPj0PoetJ5pEHomVkmfTdIgqPfJw==
 
 element-ui@^2.15.13:
   version "2.15.13"
@@ -5809,6 +5839,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+hchs-vue-charts@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/hchs-vue-charts/-/hchs-vue-charts-1.2.8.tgz#91fd09224ab38cfd3bac1d2427f0ce5cbd57664f"
+  integrity sha512-hfAaVQ2v65N+R6cmflUuBvs2Th2Nb14sFBcHrq/0snabCEm+Eu1kFjaT3uxJWYdTu8SlpXz4vhOfGaLyajpA6w==
+  dependencies:
+    chart.js "^2.3.0"
+    vue "^2.0.1"
 
 he@1.2.0, he@1.2.x, he@^1.2.0:
   version "1.2.0"
@@ -7414,6 +7452,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+moment@^2.10.2:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -9231,9 +9274,9 @@ prepend-http@^1.0.0:
   integrity sha512-PhmXi5XmoyKw1Un4E+opM2KcsJInDvKyuOumcjjw3waw86ZNjHwVUOOWLc4bCzLdcKNaWBH9e99sbWzDQsVaYg==
 
 "prettier@^1.18.2 || ^2.0.0":
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
-  integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.6.tgz#5c174b29befd507f14b83e3c19f83fdc0e974b71"
+  integrity sha512-mtuzdiBbHwPEgl7NxWlqOkithPyp4VN93V7VeHVWBF+ad3I5avc0RVDT4oImXQy9H/AqxA2NSQH8pSxHW6FYbQ==
 
 pretty-bytes@^5.6.0:
   version "5.6.0"
@@ -11298,6 +11341,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vue-chartjs@^4.1.1:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-4.1.2.tgz#f899ba14f3b80660f8d2c610a015341806dfc437"
+  integrity sha512-QSggYjeFv/L4jFSBQpX8NzrAvX0B+Ha6nDgxkTG8tEXxYOOTwKI4phRLe+B4f+REnkmg7hgPY24R0cixZJyXBg==
+
 vue-client-only@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
@@ -11380,7 +11428,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.14, vue@^2.7.10:
+vue@^2.0.1, vue@^2.6.14, vue@^2.7.10:
   version "2.7.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.7.14.tgz#3743dcd248fd3a34d421ae456b864a0246bafb17"
   integrity sha512-b2qkFyOM0kwqWFuQmgd4o+uHGU7T+2z3T+WQp8UBjADfEv2n4FEMffzBmCKNP0IGzOEEfYjvtcC62xaSKeQDrQ==
