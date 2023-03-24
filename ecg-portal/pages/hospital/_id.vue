@@ -191,9 +191,11 @@ export default {
 
     .button-container {
       display: flex;
+      justify-content: center;
       width: 100%;
 
       padding-left: 48px;
+      padding-right: 48px;
       padding-bottom: 48px;
 
       .upload-btn {
