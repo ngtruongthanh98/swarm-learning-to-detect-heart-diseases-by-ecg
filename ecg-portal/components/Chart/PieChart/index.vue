@@ -2,8 +2,6 @@
   <client-only v-if="pieChartData" placeholder="Loading...">
     <PieChart
       :chartData="pieChartData"
-      :chart-options="chartOptions"
-      :chart-data="chartData"
       :chart-id="chartId"
       :dataset-id-key="datasetIdKey"
       :plugins="plugins"
