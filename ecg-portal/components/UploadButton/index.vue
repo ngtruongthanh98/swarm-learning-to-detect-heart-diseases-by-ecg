@@ -1,14 +1,14 @@
 <template>
   <el-upload
     :class="className"
-    action="https://jsonplaceholder.typicode.com/posts/"
     :on-preview="handlePreview"
     :on-remove="handleRemove"
+    action="/upload"
     :before-remove="beforeRemove"
-    multiple
-    :limit="3"
-    :on-exceed="handleExceed"
+    :limit="1"
     :file-list="fileList"
+    :on-success="handleSuccess"
+    :on-error="handleError"
   >
     <el-button
       :class="buttonClass"
@@ -27,16 +27,7 @@
 export default {
   data() {
     return {
-      fileList: [
-        // {
-        //   name: 'food.jpeg',
-        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        // },
-        // {
-        //   name: 'food2.jpeg',
-        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        // },
-      ],
+      fileList: [],
     }
   },
   props: {
@@ -68,18 +59,17 @@ export default {
     handlePreview(file) {
       console.log(file)
     },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `The limit is 3, you selected ${
-          files.length
-        } files this time, add up to ${files.length + fileList.length} totally`
-      )
-    },
     beforeRemove(file, fileList) {
       return this.$confirm(`Cancel the transfert of ${file.name} ?`)
     },
     emitClickEvent() {
       this.$emit('click')
+    },
+    handleSuccess(response, file, fileList) {
+      // Handle successful upload
+    },
+    handleError(error, file, fileList) {
+      // Handle failed upload
     },
   },
 }
