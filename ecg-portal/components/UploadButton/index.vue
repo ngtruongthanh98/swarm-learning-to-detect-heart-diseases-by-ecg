@@ -1,42 +1,39 @@
 <template>
-  <el-upload
-    :class="className"
-    action="https://jsonplaceholder.typicode.com/posts/"
-    :on-preview="handlePreview"
-    :on-remove="handleRemove"
-    :before-remove="beforeRemove"
-    multiple
-    :limit="3"
-    :on-exceed="handleExceed"
-    :file-list="fileList"
-  >
-    <el-button
-      :class="buttonClass"
-      :size="size"
-      type="primary"
-      @click="emitClickEvent"
-      >{{ buttonName }}</el-button
+  <div class="upload-container">
+    <el-upload
+      :class="className"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      action="/upload"
+      :before-remove="beforeRemove"
+      :limit="1"
+      :file-list="fileList"
+      :on-success="handleSuccess"
+      :on-error="handleError"
     >
-    <div slot="tip" class="el-upload__tip">
-      {{ uploadTip }}
-    </div>
-  </el-upload>
+      <el-button
+        class="upload-btn"
+        :class="buttonClass"
+        :size="size"
+        type="primary"
+        @click="emitClickEvent"
+        >{{ buttonName }}</el-button
+      >
+      <div slot="tip" class="el-upload__tip">
+        {{ uploadTip }}
+      </div>
+    </el-upload>
+    <el-button class="submit-btn" type="primary" @click="submitUpload"
+      >Submit</el-button
+    >
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      fileList: [
-        // {
-        //   name: 'food.jpeg',
-        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        // },
-        // {
-        //   name: 'food2.jpeg',
-        //   url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-        // },
-      ],
+      fileList: [],
     }
   },
   props: {
@@ -60,6 +57,10 @@ export default {
       type: String,
       default: '',
     },
+    hospitalId: {
+      type: Number,
+      required: true,
+    },
   },
   methods: {
     handleRemove(file, fileList) {
@@ -68,22 +69,79 @@ export default {
     handlePreview(file) {
       console.log(file)
     },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `The limit is 3, you selected ${
-          files.length
-        } files this time, add up to ${files.length + fileList.length} totally`
-      )
-    },
     beforeRemove(file, fileList) {
       return this.$confirm(`Cancel the transfert of ${file.name} ?`)
     },
     emitClickEvent() {
       this.$emit('click')
     },
+    handleSuccess(response, file, fileList) {
+      // Handle successful upload
+      const reader = new FileReader()
+      reader.readAsText(file.raw)
+      reader.onload = () => {
+        const fileData = reader.result
+        const numbersArray = fileData
+          .split('\n')
+          .flatMap((row) => row.split(' ').map(Number))
+
+        this.$store.commit('setEcgDataRaw', numbersArray)
+      }
+    },
+    handleError(error, file, fileList) {
+      // Handle failed upload
+    },
+    submitUpload() {
+      console.log('Submit')
+
+      //! Mock data for development only
+      const resultList = [
+        {
+          title: 'Normal ECG',
+          value: '70',
+        },
+        {
+          title: 'Abnormal ECG',
+          value: '5',
+        },
+        {
+          title: 'Borderline ECG',
+          value: '2',
+        },
+        {
+          title: 'Otherwise normal ECG',
+          value: '23',
+        },
+      ]
+
+      const newResultList = resultList.map((item) => ({
+        title: item.title,
+        value: item.value,
+        additionalClass: 'bold',
+        unit: '%',
+      }))
+
+      this.$store.commit('setEcgResult', {
+        id: this.hospitalId,
+        ...newResultList,
+      })
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.upload-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+
+  .upload-btn {
+    height: 40px;
+  }
+
+  .submit-btn {
+    height: 40px;
+  }
+}
 </style>

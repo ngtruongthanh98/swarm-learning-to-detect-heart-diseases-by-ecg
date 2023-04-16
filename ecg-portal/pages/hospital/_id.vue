@@ -39,6 +39,7 @@
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
           buttonClass="custom-btn"
+          :hospitalId="hospitalId"
           @click="handleUploadEcgDataRaw"
         />
 
@@ -77,7 +78,7 @@ export default {
 
   data() {
     return {
-      hospitalId: '',
+      hospitalId: 0,
       hospitalData: {},
       isShowViewMore: false,
       hospitals: HOSPITAL_CONFIG,
@@ -95,7 +96,7 @@ export default {
   },
 
   mounted() {
-    this.hospitalId = this.$route.params.id
+    this.hospitalId = Number(this.$route.params.id)
     this.hospitalData = this.$store.getters.getHospitalById(
       this.$route.params.id
     )
@@ -105,47 +106,47 @@ export default {
     handleUploadEcgDataRaw() {
       // ! Handle raw data from .asc file
 
-      this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
+      // this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
 
       // ! testing after recieving the result from API request
 
-      const resultList = [
-        {
-          title: 'Normal ECG',
-          value: '70',
-        },
-        {
-          title: 'Abnormal ECG',
-          value: '5',
-        },
-        {
-          title: 'Borderline ECG',
-          value: '2',
-        },
-        {
-          title: 'Otherwise normal ECG',
-          value: '23',
-        },
-      ]
+      // const resultList = [
+      //   {
+      //     title: 'Normal ECG',
+      //     value: '70',
+      //   },
+      //   {
+      //     title: 'Abnormal ECG',
+      //     value: '5',
+      //   },
+      //   {
+      //     title: 'Borderline ECG',
+      //     value: '2',
+      //   },
+      //   {
+      //     title: 'Otherwise normal ECG',
+      //     value: '23',
+      //   },
+      // ]
 
-      const newResultList = resultList.map((item) => ({
-        title: item.title,
-        value: item.value,
-        additionalClass: 'bold',
-        unit: '%',
-      }))
+      // const newResultList = resultList.map((item) => ({
+      //   title: item.title,
+      //   value: item.value,
+      //   additionalClass: 'bold',
+      //   unit: '%',
+      // }))
 
-      this.$store.commit('setEcgResult', {
-        id: this.hospitalId,
-        ...newResultList,
-      })
+      // this.$store.commit('setEcgResult', {
+      //   id: this.hospitalId,
+      //   ...newResultList,
+      // })
 
       this.hospitalData = this.$store.getters.getHospitalById(
         this.$route.params.id
       )
     },
     handleDeleteEcgDataRaw() {
-      this.$store.commit('setEcgDataRaw', '')
+      this.$store.commit('setEcgDataRaw', [])
 
       this.$store.commit('resetEcgResult', this.$route.params.id)
     },
@@ -191,9 +192,11 @@ export default {
 
     .button-container {
       display: flex;
+      justify-content: center;
       width: 100%;
 
       padding-left: 48px;
+      padding-right: 48px;
       padding-bottom: 48px;
 
       .upload-btn {

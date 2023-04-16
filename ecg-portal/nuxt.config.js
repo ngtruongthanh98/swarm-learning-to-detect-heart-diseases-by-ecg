@@ -149,12 +149,23 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/postcss8', 'nuxt-purgecss'],
+  modules: ['@nuxt/postcss8', 'nuxt-purgecss', '@nuxtjs/proxy'],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  proxy: {
+    '/api': {
+      target:
+        'https://console.firebase.google.com/u/0/project/swarm-learning-ecg/storage/swarm-learning-ecg.appspot.com/files',
+      pathRewrite: {
+        '^/api': '',
+      },
+      changeOrigin: true,
+    },
   },
 
   generate: {

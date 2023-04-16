@@ -29,6 +29,7 @@
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
           buttonClass="custom-btn"
+          :hospitalId="hospitalId"
           @click="handleUploadEcgDataRaw"
         />
 
@@ -70,46 +71,9 @@ export default {
   },
   methods: {
     isEmpty,
-    handleUploadEcgDataRaw() {
-      // ! Handle raw data from .asc file
-
-      this.$store.commit('setEcgDataRaw', '263 882 533 925 824 252 95')
-
-      // ! testing after recieving the result from API request
-
-      const resultList = [
-        {
-          title: 'Normal ECG',
-          value: '70',
-        },
-        {
-          title: 'Abnormal ECG',
-          value: '5',
-        },
-        {
-          title: 'Borderline ECG',
-          value: '2',
-        },
-        {
-          title: 'Otherwise normal ECG',
-          value: '23',
-        },
-      ]
-
-      const newResultList = resultList.map((item) => ({
-        title: item.title,
-        value: item.value,
-        additionalClass: 'bold',
-        unit: '%',
-      }))
-
-      this.$store.commit('setEcgResult', {
-        id: 0,
-        ...newResultList,
-      })
-    },
+    handleUploadEcgDataRaw() {},
     handleDeleteEcgDataRaw() {
-      this.$store.commit('setEcgDataRaw', '')
+      this.$store.commit('setEcgDataRaw', [])
 
       this.$store.commit('resetEcgResult', 0)
     },
@@ -142,9 +106,11 @@ export default {
 
     .button-container {
       display: flex;
+      justify-content: center;
       width: 100%;
 
       padding-left: 48px;
+      padding-right: 48px;
       padding-bottom: 48px;
 
       .upload-btn {
