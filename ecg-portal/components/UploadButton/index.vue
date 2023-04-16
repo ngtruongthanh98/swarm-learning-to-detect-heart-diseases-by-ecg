@@ -57,6 +57,10 @@ export default {
       type: String,
       default: '',
     },
+    hospitalId: {
+      type: Number,
+      required: true,
+    },
   },
   methods: {
     handleRemove(file, fileList) {
@@ -73,12 +77,54 @@ export default {
     },
     handleSuccess(response, file, fileList) {
       // Handle successful upload
+      const reader = new FileReader()
+      reader.readAsText(file.raw)
+      reader.onload = () => {
+        const fileData = reader.result
+        const numbersArray = fileData
+          .split('\n')
+          .flatMap((row) => row.split(' ').map(Number))
+
+        this.$store.commit('setEcgDataRaw', numbersArray)
+      }
     },
     handleError(error, file, fileList) {
       // Handle failed upload
     },
     submitUpload() {
       console.log('Submit')
+
+      //! Mock data for development only
+      const resultList = [
+        {
+          title: 'Normal ECG',
+          value: '70',
+        },
+        {
+          title: 'Abnormal ECG',
+          value: '5',
+        },
+        {
+          title: 'Borderline ECG',
+          value: '2',
+        },
+        {
+          title: 'Otherwise normal ECG',
+          value: '23',
+        },
+      ]
+
+      const newResultList = resultList.map((item) => ({
+        title: item.title,
+        value: item.value,
+        additionalClass: 'bold',
+        unit: '%',
+      }))
+
+      this.$store.commit('setEcgResult', {
+        id: this.hospitalId,
+        ...newResultList,
+      })
     },
   },
 }

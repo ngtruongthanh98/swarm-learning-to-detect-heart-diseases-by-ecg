@@ -121,7 +121,7 @@ export const state = () => ({
     openSignupModal: false,
     openCheckoutModal: false,
   },
-  ecgDataRaw: '',
+  ecgDataRaw: [],
   hospitals: [
     {
       id: 0,
@@ -197,6 +197,7 @@ export const getters = {
   getHospitalById: (state) => (id) => {
     return state.hospitals.find((hospital) => hospital.id == id)
   },
+
 }
 
 export const mutations = {
