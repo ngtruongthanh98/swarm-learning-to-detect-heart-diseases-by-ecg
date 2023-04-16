@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { isEmpty } from 'lodash'
+
 export default {
   data() {
     return {
@@ -121,10 +123,12 @@ export default {
         unit: '%',
       }))
 
-      this.$store.commit('setEcgResult', {
-        id: this.hospitalId,
-        ...newResultList,
-      })
+      if (!isEmpty(this.$store.state.ecgDataRaw)) {
+        this.$store.commit('setEcgResult', {
+          id: this.hospitalId,
+          ...newResultList,
+        })
+      }
     },
   },
 }
