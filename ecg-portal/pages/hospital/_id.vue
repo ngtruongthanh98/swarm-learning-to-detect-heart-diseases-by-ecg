@@ -45,7 +45,7 @@
 
         <normal-button
           v-else
-          button-name="Delete"
+          button-name="Clear the report"
           className="delete-btn"
           @click="handleDeleteEcgDataRaw"
         />
