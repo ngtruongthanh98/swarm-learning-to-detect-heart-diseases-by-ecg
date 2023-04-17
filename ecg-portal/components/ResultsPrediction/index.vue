@@ -65,16 +65,16 @@
 
       <div v-if="!isCollapsed" class="hospital-details">
         <div
-          v-for="(ele, index) in HOSPITALS_DATA_MOCK"
+          v-for="(hospital, index) in hospitalDetailData"
           class="hospital-details__item"
           :key="index"
         >
           <div class="title">
-            {{ ele.hospitalName }}
+            {{ hospital.hospitalName }}
           </div>
           <div class="hospital">
             <div
-              v-for="(item, id) in ele.resultList"
+              v-for="(item, id) in hospital.resultList"
               class="hospital__item"
               :key="id"
             >
@@ -92,7 +92,7 @@
           <div class="box-container">
             <div class="chart-box">
               <div class="chart-name">Predicted result</div>
-              <pie-chart />
+              <pie-chart :hospitalId="index"/>
             </div>
           </div>
         </div>
@@ -119,7 +119,6 @@ export default {
     },
     ecgResult: {
       type: Object,
-      required: true,
     },
     hospitalId: {
       type: Number,
@@ -315,6 +314,20 @@ export default {
       },
       ecgTypes: [],
       ecgValues: [],
+      hospitalDetailData: [],
+    }
+  },
+  mounted() {    
+    if(this.isShowViewMore) {
+      this.hospitalSwarmLearningData = this.$store.getters.getHospitalById(0)
+      
+      for (let i = 1; i <= 5; i++) {
+        const hospitalData = this.$store.getters.getHospitalById(i)
+        this.hospitalDetailData.push({
+          hospitalName: hospitalData.name,
+          resultList: hospitalData.ecgResult.result
+        })
+      }
     }
   },
   methods: {

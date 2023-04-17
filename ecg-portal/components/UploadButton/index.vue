@@ -98,7 +98,7 @@ export default {
       // Handle failed upload
     },
     submitUpload() {
-      console.log('Submit')
+      console.log('Submited')
 
       if(isEmpty(this.$store.state.ecgDataRaw)) {
         return
@@ -131,9 +131,6 @@ export default {
         unit: '%',
       }))
 
-      console.log('isSingleHospital: ', this.isSingleHospital);
-
-
       // if (!isEmpty(this.$store.state.ecgDataRaw)) {
       //   this.$store.commit('setEcgResult', {
       //     id: this.hospitalId,
@@ -147,6 +144,13 @@ export default {
           result: newResultList,
         })
       } else {
+        // Swarm Learning
+          this.$store.commit('setEcgResult', {
+            id: 0,
+            result: newResultList,
+          })
+
+        // Each hospital
         for (let hospitalId = 1; hospitalId <= 5; hospitalId++) {
           this.$store.commit('setEcgResult', {
             id: hospitalId,
