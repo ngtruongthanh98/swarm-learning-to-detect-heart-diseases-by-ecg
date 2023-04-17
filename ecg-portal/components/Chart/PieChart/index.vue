@@ -44,27 +44,49 @@ export default {
       type: Array,
       default: () => [],
     },
+    hospitalId: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
       pieChartData: {
-        labels: [
-          'Normal ECG',
-          'Abnormal ECG',
-          'Borderline ECG',
-          'Otherwise normal ECG',
-        ],
+        lables: [],
         datasets: [
           {
             label: 'Visualization',
-            data: [70, 5, 2, 23],
+            data: [],
             backgroundColor: ['#017DD3', '#ED7D28', '#D23A1D', '#F5E18F'],
             borderColor: 'rgba(255, 255, 255, 1)',
           },
         ],
       },
+      hospitalData: {},
+      ecgTypes: [],
+      ecgValues: [],
     }
   },
+  mounted() {
+    this.hospitalData = this.$store.getters.getHospitalById(this.hospitalId)
+
+    const ecgTypes = this.hospitalData.ecgResult.result.map(ecg => ecg.title);
+    const ecgValues = this.hospitalData.ecgResult.result.map(ecg => ecg.value);
+
+
+    this.pieChartData = {
+      labels: ecgTypes,
+      datasets: [
+        {
+          label: 'Visualization',
+          data: ecgValues,
+          backgroundColor: ['#017DD3', '#ED7D28', '#D23A1D', '#F5E18F'],
+          borderColor: 'rgba(255, 255, 255, 1)',
+        },
+      ],
+    };
+  }
+
 }
 </script>
 

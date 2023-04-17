@@ -45,7 +45,7 @@
 
       <div class="result-ecg__boby">
         <div
-          v-for="(ele, index) in ecgResult"
+          v-for="(ele, index) in ecgResult.result"
           class="result-ecg__item"
           :key="index"
         >
@@ -101,7 +101,7 @@
 
     <div class="chart-container">
       <div class="chart-name">Overall result</div>
-      <pie-chart />
+      <pie-chart :hospitalId="hospitalId"/>
     </div>
   </div>
 </template>
@@ -313,85 +313,15 @@ export default {
           },
         ],
       },
-      // pieChartData: {
-      //   labels: [
-      //     '2019-06',
-      //     '2019-07',
-      //     '2019-08',
-      //     '2019-09',
-      //     '2019-10',
-      //     '2019-11',
-      //   ],
-      //   datasets: [
-      //     {
-      //       label: 'Visualization',
-      //       data: [72, 131, 12, 3, 4, 55],
-      //       backgroundColor: [
-      //         '#99aa00',
-      //         '#aabbee',
-      //         '#990000',
-      //         '#99ff00',
-      //         '#994400',
-      //         '#9900ff',
-      //       ],
-      //       borderColor: 'rgba(255, 255, 255, 1)',
-      //       borderWidth: 2,
-      //       radius: 240,
-      //       hoverBackgroundColor: 'rgba(100, 0, 0, 0.5)',
-      //       hoverOffset: 35,
-      //     },
-      //   ],
-      // },
-      // barChartOptions: {
-      //   responsive: true,
-      //   maintainAspectRatio: false,
-      //   pointStyle: 'star',
-      //   barThickness: 3,
-      //   hoverOffset: 4,
-      //   legend: {
-      //     display: true,
-      //     title: 'Pie Chart Samples',
-      //   },
-      //   title: {
-      //     display: true,
-      //     text: 'Customer analytics data',
-      //     fontSize: 24,
-      //     fontColor: '#6b7280',
-      //   },
-      //   tooltips: {
-      //     backgroundColor: '#17BF62',
-      //   },
-      //   // scales: {
-      //   //   xAxes: [
-      //   //     {
-      //   //       gridLines: {
-      //   //         display: true
-      //   //       }
-      //   //     }
-      //   //   ],
-      //   //   yAxes: [
-      //   //     {
-      //   //       ticks: {
-      //   //         beginAtZero: true,
-      //   //         max: 7,
-      //   //         min: 0,
-      //   //         stepSize: 1
-      //   //       },
-      //   //       gridLines: {
-      //   //         display: true
-      //   //       }
-      //   //     }
-      //   //   ]
-      //   // }
-      // },
+      ecgTypes: [],
+      ecgValues: [],
     }
   },
   methods: {
     onClickViewDetails() {
       this.isCollapsed = !this.isCollapsed
     },
-  },
-  mounted() {},
+  }
 }
 </script>
 
