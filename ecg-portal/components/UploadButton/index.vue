@@ -63,6 +63,10 @@ export default {
       type: Number,
       required: true,
     },
+    isSingleHospital: {
+      type: Boolean,
+      required: true
+    }
   },
   methods: {
     handleRemove(file, fileList) {
@@ -96,7 +100,11 @@ export default {
     submitUpload() {
       console.log('Submit')
 
-      //! Mock data for development only
+      if(isEmpty(this.$store.state.ecgDataRaw)) {
+        return
+      }
+
+      //! Mock data for development only -> get data from the server
       const resultList = [
         {
           title: 'Normal ECG',
@@ -123,11 +131,31 @@ export default {
         unit: '%',
       }))
 
-      if (!isEmpty(this.$store.state.ecgDataRaw)) {
+      console.log('isSingleHospital: ', this.isSingleHospital);
+
+
+      // if (!isEmpty(this.$store.state.ecgDataRaw)) {
+      //   this.$store.commit('setEcgResult', {
+      //     id: this.hospitalId,
+      //     ...newResultList,
+      //   })
+      // }
+
+      if (this.isSingleHospital) {
         this.$store.commit('setEcgResult', {
           id: this.hospitalId,
-          ...newResultList,
+          result: newResultList,
         })
+      } else {
+        for (let hospitalId = 1; hospitalId <= 5; hospitalId++) {
+          this.$store.commit('setEcgResult', {
+            id: hospitalId,
+            result: newResultList,
+          })
+        }
+
+
+        this.$store.commit('setIsSwarmLearningDone', true)
       }
     },
   },

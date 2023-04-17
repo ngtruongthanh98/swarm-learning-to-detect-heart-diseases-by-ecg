@@ -24,12 +24,13 @@
 
       <div class="button-container">
         <upload-button
-          v-if="isEmpty(hospitalData.ecgResult)"
+        v-if="isEmpty(hospitalData.ecgResult)"
           button-name="Click to upload"
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
           buttonClass="custom-btn"
           :hospitalId="hospitalId"
+          :isSingleHospital="isSingleHospital"
           @click="handleUploadEcgDataRaw"
         />
 
@@ -64,6 +65,7 @@ export default {
       hospitalData: {},
       hospitalId: 0,
       isShowViewMore: true,
+      isSingleHospital: false,
     }
   },
   mounted() {

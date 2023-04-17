@@ -122,6 +122,7 @@ export const state = () => ({
     openCheckoutModal: false,
   },
   ecgDataRaw: [],
+  isSwarmLearningDone: false,
   hospitals: [
     {
       id: 0,
@@ -197,7 +198,6 @@ export const getters = {
   getHospitalById: (state) => (id) => {
     return state.hospitals.find((hospital) => hospital.id == id)
   },
-
 }
 
 export const mutations = {
@@ -291,6 +291,9 @@ export const mutations = {
         el.ecgResult = {}
       }
     })
+  },
+  setIsSwarmLearningDone: (state, status) => {
+    state.isSwarmLearningDone = status
   },
 }
 /* 

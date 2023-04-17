@@ -40,6 +40,7 @@
           className="upload-btn"
           buttonClass="custom-btn"
           :hospitalId="hospitalId"
+          :isSingleHospital="isSingleHospital"
           @click="handleUploadEcgDataRaw"
         />
 
@@ -82,6 +83,7 @@ export default {
       hospitalData: {},
       isShowViewMore: false,
       hospitals: HOSPITAL_CONFIG,
+      isSingleHospital: true,
     }
   },
   computed: {
