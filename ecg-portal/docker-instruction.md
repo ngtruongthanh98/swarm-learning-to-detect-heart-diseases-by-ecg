@@ -6,6 +6,12 @@ docker run -p 3000:3000 ecg-portal
 
 open browser, http://172.17.0.2:3000/
 
+###### Docker list container #####
+docker ps
+
+###### docker remove container #####
+docker rm -f container_name
+
 ####### TEST ######
 docker build -t ecg-portal:test .
 
