@@ -1,0 +1,9 @@
+node_modules
+.dockerignore
+Dockerfile*
+.env*
+.git*
+.nuxt*
+.vscode*
+*.log
+*.md
