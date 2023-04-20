@@ -1,0 +1,202 @@
+{
+  "hospitals": [
+    {
+      "id": 0,
+      "name": "Swarm Learning",
+      "ecgResult": {
+        "id": 0,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 70
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 5
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 2
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "name": "Cho Ray Hospital",
+      "ecgResult": {
+        "id": 1,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 65
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 10
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 5
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Bach Mai Hospital",
+      "ecgResult": {
+        "id": 2,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 60
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 15
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 10
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Tam Duc Hospital",
+      "ecgResult": {
+        "id": 3,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 75
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 3
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 1
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Viet Phap Hospital",
+      "ecgResult": {
+        "id": 4,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 80
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 2
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 3
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "115 People's Hospital",
+      "ecgResult": {
+        "id": 5,
+        "result": [
+          {
+            "additionalClass": "bold",
+            "title": "Normal ECG",
+            "unit": "%",
+            "value": 72
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Abnormal ECG",
+            "unit": "%",
+            "value": 8
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 4
+          },
+          {
+            "additionalClass": "bold",
+            "title": "Borderline ECG",
+            "unit": "%",
+            "value": 16
+          }
+        ]
+      }
+    }
+  ]
+}
