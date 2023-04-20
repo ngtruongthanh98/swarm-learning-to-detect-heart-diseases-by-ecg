@@ -1,0 +1,136 @@
+{
+  "hospitals": [
+    {
+      "id": 0,
+      "name": "Swarm Learning",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 70
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 5
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 2
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 23
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Cho Ray Hospital",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 65
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 10
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 5
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Bach Mai Hospital",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 60
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 15
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 10
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Tam Duc Hospital",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 75
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 3
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 1
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 21
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Viet Phap Hospital",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 80
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 2
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 3
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "115 People's Hospital",
+      "result": [
+        {
+          "title": "Normal ECG",
+          "value": 72
+        },
+        {
+          "title": "Abnormal ECG",
+          "value": 8
+        },
+        {
+          "title": "Borderline ECG",
+          "value": 4
+        },
+        {
+          "title": "Otherwise normal ECG",
+          "value": 16
+        }
+      ]
+    }
+  ]
+}
