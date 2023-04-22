@@ -24,6 +24,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/firebase": "^8.2.2",
     "@nuxtjs/proxy": "^2.1.0",
     "babel-polyfill": "^6.26.0",

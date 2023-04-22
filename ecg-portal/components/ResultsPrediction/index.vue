@@ -92,7 +92,7 @@
           <div class="box-container">
             <div class="chart-box">
               <div class="chart-name">Predicted result</div>
-              <pie-chart :hospitalId="index"/>
+              <pie-chart :hospitalId="index" />
             </div>
           </div>
         </div>
@@ -101,13 +101,15 @@
 
     <div class="chart-container">
       <div class="chart-name">Overall result</div>
-      <pie-chart :hospitalId="hospitalId"/>
+      <pie-chart :hospitalId="hospitalId" />
     </div>
   </div>
 </template>
 
 <script>
 import PieChart from '@/components/Chart/PieChart'
+import { isEmpty } from 'lodash'
+
 export default {
   components: {
     PieChart,
@@ -131,179 +133,6 @@ export default {
   data() {
     return {
       isCollapsed: true,
-      RESULT_DATA_MOCK: [
-        {
-          title: 'Normal ECG',
-          value: '70',
-          additionalClass: 'bold',
-          unit: '%',
-        },
-        {
-          title: 'Abnormal ECG',
-          value: '5',
-          additionalClass: 'bold',
-          unit: '%',
-        },
-        {
-          title: 'Borderline ECG',
-          value: '2',
-          additionalClass: 'bold',
-          unit: '%',
-        },
-        {
-          title: 'Otherwise normal ECG',
-          value: '23',
-          additionalClass: 'bold',
-          unit: '%',
-        },
-      ],
-      HOSPITALS_DATA_MOCK: [
-        {
-          hospitalName: 'Cho Ray Hospital',
-          resultList: [
-            {
-              title: 'Normal ECG',
-              value: '70',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Abnormal ECG',
-              value: '5',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Borderline ECG',
-              value: '2',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Otherwise normal ECG',
-              value: '23',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-          ],
-        },
-        {
-          hospitalName: 'Bach Mai Hospital',
-          resultList: [
-            {
-              title: 'Normal ECG',
-              value: '70',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Abnormal ECG',
-              value: '5',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Borderline ECG',
-              value: '2',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Otherwise normal ECG',
-              value: '23',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-          ],
-        },
-        {
-          hospitalName: 'Tam Duc Hospital',
-          resultList: [
-            {
-              title: 'Normal ECG',
-              value: '70',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Abnormal ECG',
-              value: '5',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Borderline ECG',
-              value: '2',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Otherwise normal ECG',
-              value: '23',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-          ],
-        },
-        {
-          hospitalName: 'Viet Phap Hospital',
-          resultList: [
-            {
-              title: 'Normal ECG',
-              value: '70',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Abnormal ECG',
-              value: '5',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Borderline ECG',
-              value: '2',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Otherwise normal ECG',
-              value: '23',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-          ],
-        },
-        {
-          hospitalName: "115 People's Hospital",
-          resultList: [
-            {
-              title: 'Normal ECG',
-              value: '70',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Abnormal ECG',
-              value: '5',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Borderline ECG',
-              value: '2',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-            {
-              title: 'Otherwise normal ECG',
-              value: '23',
-              additionalClass: 'bold',
-              unit: '%',
-            },
-          ],
-        },
-      ],
       chartData: {
         datasets: [
           {
@@ -317,16 +146,32 @@ export default {
       hospitalDetailData: [],
     }
   },
-  mounted() {    
-    if(this.isShowViewMore) {
-      this.hospitalSwarmLearningData = this.$store.getters.getHospitalById(0)
-      
-      for (let i = 1; i <= 5; i++) {
-        const hospitalData = this.$store.getters.getHospitalById(i)
-        this.hospitalDetailData.push({
-          hospitalName: hospitalData.name,
-          resultList: hospitalData.ecgResult.result
-        })
+  watch: {
+    '$store.state.isSwarmLearningDone': function (newValue) {
+      if (newValue) {
+        if (!isEmpty(this.$store.getters.getHospitalById(0))) {
+          for (let i = 1; i <= 5; i++) {
+            const hospitalData = this.$store.getters.getHospitalById(i)
+            this.hospitalDetailData.push({
+              hospitalName: hospitalData.name,
+              resultList: hospitalData?.ecgResult?.result,
+            })
+          }
+        }
+      }
+    },
+  },
+  async mounted() {
+    if (this.$store.state.isSwarmLearningDone) {
+      // Swarm Learning
+      if (!isEmpty(this.$store.getters.getHospitalById(0))) {
+        for (let i = 1; i <= 5; i++) {
+          const hospitalData = this.$store.getters.getHospitalById(i)
+          this.hospitalDetailData.push({
+            hospitalName: hospitalData.name,
+            resultList: hospitalData?.ecgResult?.result,
+          })
+        }
       }
     }
   },
@@ -334,7 +179,7 @@ export default {
     onClickViewDetails() {
       this.isCollapsed = !this.isCollapsed
     },
-  }
+  },
 }
 </script>
 
