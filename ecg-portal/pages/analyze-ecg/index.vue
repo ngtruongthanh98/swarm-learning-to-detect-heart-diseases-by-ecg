@@ -24,7 +24,7 @@
 
       <div class="button-container">
         <upload-button
-        v-if="isEmpty(hospitalData.ecgResult)"
+          v-if="isEmpty(hospitalData.ecgResult)"
           button-name="Click to upload"
           upload-tip="Please provide ECG data (.asc format)"
           className="upload-btn"
@@ -68,16 +68,20 @@ export default {
       isSingleHospital: false,
     }
   },
-  mounted() {
+  async mounted() {
     this.hospitalData = this.$store.getters.getHospitalById(0)
   },
   methods: {
     isEmpty,
-    handleUploadEcgDataRaw() {},
+    handleUploadEcgDataRaw() {
+      this.$store.commit('resetEcgResult', 0)
+    },
     handleDeleteEcgDataRaw() {
       this.$store.commit('setEcgDataRaw', [])
 
-      this.$store.commit('resetEcgResult', 0)
+      for (let i = 0; i <= 5; i++) {
+        this.$store.commit('resetEcgResult', i)
+      }
     },
   },
 }

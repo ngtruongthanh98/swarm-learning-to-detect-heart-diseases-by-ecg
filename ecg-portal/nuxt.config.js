@@ -121,6 +121,9 @@ module.exports = {
       },
     ],
   },
+  serverMiddleware: [
+    { path: '/api', handler: '@/api/index.js'}
+  ],
 
   /*
    ** Customize the progress-bar color
@@ -149,7 +152,7 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/postcss8', 'nuxt-purgecss', '@nuxtjs/proxy'],
+  modules: ['@nuxt/postcss8', 'nuxt-purgecss', '@nuxtjs/proxy', '@nuxtjs/axios'],
   /*
    ** Axios module configuration
    */

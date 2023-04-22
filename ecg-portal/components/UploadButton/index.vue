@@ -65,8 +65,8 @@ export default {
     },
     isSingleHospital: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     handleRemove(file, fileList) {
@@ -97,67 +97,42 @@ export default {
     handleError(error, file, fileList) {
       // Handle failed upload
     },
-    submitUpload() {
+    async submitUpload() {
       console.log('Submited')
 
-      if(isEmpty(this.$store.state.ecgDataRaw)) {
+      if (isEmpty(this.$store.state.ecgDataRaw)) {
         return
       }
 
-      //! Mock data for development only -> get data from the server
-      const resultList = [
-        {
-          title: 'Normal ECG',
-          value: '70',
-        },
-        {
-          title: 'Abnormal ECG',
-          value: '5',
-        },
-        {
-          title: 'Borderline ECG',
-          value: '2',
-        },
-        {
-          title: 'Otherwise normal ECG',
-          value: '23',
-        },
-      ]
-
-      const newResultList = resultList.map((item) => ({
-        title: item.title,
-        value: item.value,
-        additionalClass: 'bold',
-        unit: '%',
-      }))
-
-      // if (!isEmpty(this.$store.state.ecgDataRaw)) {
-      //   this.$store.commit('setEcgResult', {
-      //     id: this.hospitalId,
-      //     ...newResultList,
-      //   })
-      // }
-
       if (this.isSingleHospital) {
+        const response = await this.$axios.get(`/api/result/${this.hospitalId}`)
+        const resultList = response.data
+        const newResultList = resultList?.map((item) => ({
+          title: item.title,
+          value: item.value,
+          additionalClass: 'bold',
+          unit: '%',
+        }))
         this.$store.commit('setEcgResult', {
           id: this.hospitalId,
           result: newResultList,
         })
       } else {
         // Swarm Learning
+        for (let id = 0; id < 6; id++) {
+          const response = await this.$axios.get(`/api/result/${id}`)
+          const resultList = response.data
+          const newResultList = resultList?.map((item) => ({
+            title: item.title,
+            value: item.value,
+            additionalClass: 'bold',
+            unit: '%',
+          }))
           this.$store.commit('setEcgResult', {
-            id: 0,
-            result: newResultList,
-          })
-
-        // Each hospital
-        for (let hospitalId = 1; hospitalId <= 5; hospitalId++) {
-          this.$store.commit('setEcgResult', {
-            id: hospitalId,
+            id: id,
             result: newResultList,
           })
         }
-
 
         this.$store.commit('setIsSwarmLearningDone', true)
       }
