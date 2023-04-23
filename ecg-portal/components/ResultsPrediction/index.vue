@@ -160,6 +160,13 @@ export default {
         }
       }
     },
+    hospitalId: function (newVal, oldVal) {
+      const hospitalData = this.$store.getters.getHospitalById(newVal)
+      this.hospitalDetailData.push({
+        hospitalName: hospitalData.name,
+        resultList: hospitalData?.ecgResult?.result,
+      })
+    },
   },
   async mounted() {
     if (this.$store.state.isSwarmLearningDone) {
