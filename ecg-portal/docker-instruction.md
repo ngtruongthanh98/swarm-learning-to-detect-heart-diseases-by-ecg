@@ -4,12 +4,16 @@ docker build -t ecg-portal:latest .
 
 docker run -p 3000:3000 ecg-portal
 
-open browser, http://172.17.0.2:3000/
+open browser, access http://localhost:3000
 
-###### Docker list container #####
+on the other hand, we can open the url expose from container: http://172.17.0.2:3000/
+
+###### Docker list container
+
 docker ps
 
-###### docker remove container #####
+###### docker remove container
+
 docker rm -f container_name
 
 ####### TEST ######
