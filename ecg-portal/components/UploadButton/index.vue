@@ -109,10 +109,10 @@ export default {
 
       if (this.isSingleHospital) {
         // const response = await this.$axios.get(`/api/result/${this.hospitalId}`)
-        const response = await this.$axios.get(
-          `/result/cnn/${this.hospitalId}`,
+        const response = await this.$axios.post(
+          `http://localhost:5000/result/cnn/${this.hospitalId}`,
           {
-            params: {
+            body: {
               ECG: this.fileData,
             },
             headers: {
