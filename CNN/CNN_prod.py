@@ -38,6 +38,13 @@ def predict_ecg(hospital_id):
         model = model1
     elif hospital_id == 2:
         model = model2
+    # elif hospital_id == 3:
+    #     model = model1
+    # elif hospital_id == 4:
+    #     model = model2
+    # elif hospital_id == 5:
+    #     model = model1
+
     json_data = request.get_json()
     raw_data = json_data["body"]["data"]
     print("🚀 ~ file: CNN_prod.py:42 ~ raw_data:", raw_data)
