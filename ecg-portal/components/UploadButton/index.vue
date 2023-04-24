@@ -87,6 +87,9 @@ export default {
       reader.readAsText(file.raw)
       reader.onload = () => {
         const fileData = reader.result
+
+        this.fileData = fileData
+
         const numbersArray = fileData
           .split('\n')
           .flatMap((row) => row.split(' ').map(Number))
@@ -105,7 +108,19 @@ export default {
       }
 
       if (this.isSingleHospital) {
-        const response = await this.$axios.get(`/api/result/${this.hospitalId}`)
+        // const response = await this.$axios.get(`/api/result/${this.hospitalId}`)
+        const response = await this.$axios.get(
+          `/result/cnn/${this.hospitalId}`,
+          {
+            params: {
+              ECG: this.fileData,
+            },
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
         const resultList = response.data
         const newResultList = resultList?.map((item) => ({
           title: item.title,
