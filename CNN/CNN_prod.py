@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import numpy as np
 import json
+from flask_cors import CORS
 
 model1 = load_model('CNN_ECG.h5')
 model2 = load_model("choray_CNN_ECG.h5")
@@ -28,6 +29,7 @@ y_pred = model1.predict(input)
 label_dict = {0: "Normal ECG", 1: "Abnormal ECG", 2: "Otherwise normal ECG", 3: "Borderline ECG"}
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/result/cnn/<int:hospital_id>', methods=['POST'])
 def predict_ecg(hospital_id):
@@ -35,8 +37,10 @@ def predict_ecg(hospital_id):
         model = model1
     elif hospital_id == 2:
         model = model2
-    raw_data = request.data
-    raw_data = np.fromstring(raw_data, sep='\n').reshape((5000, 8))
+    json_data = request.get_json()
+    raw_data = json_data["body"]["data"]
+    print("🚀 ~ file: CNN_prod.py:42 ~ raw_data:", raw_data)
+    raw_data = np.fromstring(raw_data, sep=' ').reshape((5000, 8))
     data = preprocess_data(raw_data)
     y_pred = model.predict(data)
     normalized_predict = [(val/sum(y_pred[0]))*100 for val in y_pred[0]]
