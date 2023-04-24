@@ -3,7 +3,9 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import json
 from flask_cors import CORS
+from agent.server import GetInfoByHositalAndID
 import math
+import os
 
 model1 = load_model('CNN_ECG.h5')
 model2 = load_model("choray_CNN_ECG.h5")
@@ -49,6 +51,25 @@ def predict_ecg(hospital_id):
 
     # create a list of dictionaries with the label and percentage values
     result = [{'title': label_dict[i], 'value': percent} for i, percent in enumerate(rounded_predict)]
+
+    # convert the list to a JSON object
+    json_result = json.dumps(result)
+    return json_result
+
+@app.route('/result/svm/<int:hospital_id>', methods=['POST'])
+def predict_svm_ecg(hospital_id):
+    if hospital_id == 1:
+        model = model1
+    elif hospital_id == 2:
+        model = model2
+    json_data = request.get_json()
+    file_name = json_data["body"]["data"]
+    print("🚀 ~ file: CNN_prod.py:42 ~ file_name:", file_name)
+    
+    res = GetInfoByHositalAndID(hospital_id, os.path.splitext(file_name)[0])
+
+    # create a list of dictionaries with the label and percentage values
+    result = [{'title': key, 'value': round(res[key] * 100, 2)} for key in res]
 
     # convert the list to a JSON object
     json_result = json.dumps(result)

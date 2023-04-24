@@ -31,7 +31,7 @@ for hos in os.listdir(num_path):
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-    svm = SVC(kernel='rbf', C=1)
+    svm = SVC(kernel='rbf', C=1, probability=True)
     svm.fit(X_train, y_train)
 
     score = svm.score(X_test, y_test)
