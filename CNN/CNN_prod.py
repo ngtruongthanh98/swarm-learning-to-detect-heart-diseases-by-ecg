@@ -35,8 +35,7 @@ def predict_ecg(hospital_id):
         model = model1
     elif hospital_id == 2:
         model = model2
-    file = request.files['file']
-    raw_data = file.read()
+    raw_data = request.data
     raw_data = np.fromstring(raw_data, sep='\n').reshape((5000, 8))
     data = preprocess_data(raw_data)
     y_pred = model.predict(data)
