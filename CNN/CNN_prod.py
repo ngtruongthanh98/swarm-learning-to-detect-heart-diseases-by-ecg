@@ -29,7 +29,7 @@ label_dict = {0: "Normal ECG", 1: "Abnormal ECG", 2: "Otherwise normal ECG", 3: 
 
 app = Flask(__name__)
 
-@app.route('/result/<int:hospital_id>', methods=['POST'])
+@app.route('/result/cnn/<int:hospital_id>', methods=['POST'])
 def predict_ecg(hospital_id):
     if hospital_id == 1:
         model = model1
