@@ -3,6 +3,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import json
 from flask_cors import CORS
+import math
 
 model1 = load_model('CNN_ECG.h5')
 model2 = load_model("choray_CNN_ECG.h5")
@@ -44,9 +45,10 @@ def predict_ecg(hospital_id):
     data = preprocess_data(raw_data)
     y_pred = model.predict(data)
     normalized_predict = [(val/sum(y_pred[0]))*100 for val in y_pred[0]]
+    rounded_predict = list(map(lambda x: round(x, 2), normalized_predict))
 
     # create a list of dictionaries with the label and percentage values
-    result = [{'title': label_dict[i], 'value': percent} for i, percent in enumerate(normalized_predict)]
+    result = [{'title': label_dict[i], 'value': percent} for i, percent in enumerate(rounded_predict)]
 
     # convert the list to a JSON object
     json_result = json.dumps(result)
