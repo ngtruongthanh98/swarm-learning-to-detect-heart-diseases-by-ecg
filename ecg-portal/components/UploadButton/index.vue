@@ -166,8 +166,19 @@ export default {
         }
       } else {
         // Swarm Learning
-        for (let id = 0; id < 6; id++) {
-          const response = await this.$axios.get(`/api/result/${id}`)
+        for (let id = 1; id < 3; id++) {
+          const response = await this.$axios.post(
+            `http://127.0.0.1:5000/result/cnn/${id}`,
+            {
+              body: {
+                data: this.fileData,
+              },
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+
           const resultList = response.data
           const newResultList = resultList?.map((item) => ({
             title: item.title,
@@ -179,7 +190,51 @@ export default {
             id: id,
             result: newResultList,
           })
+
+          if (id === 1) {
+            this.valuesArray1 = resultList.map((item) => item.value)
+          }
+
+          if (id === 2) {
+            this.valuesArray2 = resultList.map((item) => item.value)
+          }
         }
+
+        // Define the column order
+        const columnOrder = [
+          'Normal ECG',
+          'Abnormal ECG',
+          'Otherwise normal ECG',
+          'Borderline ECG',
+        ]
+
+        // Create the sumArray with values added
+        const sumArray = this.valuesArray1.map((item, index) => ({
+          value: this.valuesArray1[index] + this.valuesArray2[index],
+        }))
+
+        // Add the column order to each item in the sumArray
+        const sumArrayWithOrder = sumArray.map((item, index) => ({
+          title: columnOrder[index],
+          value: item.value,
+        }))
+
+        // Calculate the sum of all values in the sumArray
+        const sumOfValues = sumArrayWithOrder.reduce(
+          (acc, item) => acc + item.value,
+          0
+        )
+
+        // Calculate the percentage of each value in the sumArrayWithOrder
+        const sumArrayWithPercentage = sumArrayWithOrder.map((item) => ({
+          title: item.title,
+          value: ((item.value / sumOfValues) * 100).toFixed(2),
+        }))
+
+        this.$store.commit('setEcgResult', {
+          id: 0,
+          result: sumArrayWithPercentage,
+        })
 
         this.$store.commit('setIsSwarmLearningDone', true)
       }
