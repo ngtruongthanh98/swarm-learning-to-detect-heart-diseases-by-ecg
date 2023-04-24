@@ -89,6 +89,7 @@ export default {
         const fileData = reader.result
 
         this.fileData = fileData
+        this.fileName = file.raw.name
 
         const numbersArray = fileData
           .split('\n')
@@ -108,30 +109,61 @@ export default {
       }
 
       if (this.isSingleHospital) {
-        // const response = await this.$axios.get(`/api/result/${this.hospitalId}`)
-        const response = await this.$axios.post(
-          `http://127.0.0.1:5000/result/cnn/${this.hospitalId}`,
-          {
-            body: {
-              data: this.fileData,
-            },
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+        if (this.hospitalId === 1 || this.hospitalId === 2) {
+          const response = await this.$axios.post(
+            `http://127.0.0.1:5000/result/cnn/${this.hospitalId}`,
+            {
+              body: {
+                data: this.fileData,
+              },
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
 
-        const resultList = response.data
-        const newResultList = resultList?.map((item) => ({
-          title: item.title,
-          value: item.value,
-          additionalClass: 'bold',
-          unit: '%',
-        }))
-        this.$store.commit('setEcgResult', {
-          id: this.hospitalId,
-          result: newResultList,
-        })
+          const resultList = response.data
+          const newResultList = resultList?.map((item) => ({
+            title: item.title,
+            value: item.value,
+            additionalClass: 'bold',
+            unit: '%',
+          }))
+          this.$store.commit('setEcgResult', {
+            id: this.hospitalId,
+            result: newResultList,
+          })
+        }
+
+        if (
+          this.hospitalId === 3 ||
+          this.hospitalId === 4 ||
+          this.hospitalId === 5
+        ) {
+          const response = await this.$axios.post(
+            `http://127.0.0.1:5000/result/svm/${this.hospitalId}`,
+            {
+              body: {
+                data: this.fileName,
+              },
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          )
+
+          const resultList = response.data
+          const newResultList = resultList?.map((item) => ({
+            title: item.title,
+            value: item.value,
+            additionalClass: 'bold',
+            unit: '%',
+          }))
+          this.$store.commit('setEcgResult', {
+            id: this.hospitalId,
+            result: newResultList,
+          })
+        }
       } else {
         // Swarm Learning
         for (let id = 0; id < 6; id++) {
