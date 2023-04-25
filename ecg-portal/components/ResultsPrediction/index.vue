@@ -92,7 +92,7 @@
           <div class="box-container">
             <div class="chart-box">
               <div class="chart-name">Predicted result</div>
-              <pie-chart :hospitalId="index" />
+              <pie-chart :hospitalId="index + 1" />
             </div>
           </div>
         </div>
@@ -112,23 +112,23 @@ import { isEmpty } from 'lodash'
 
 export default {
   components: {
-    PieChart,
+    PieChart
   },
   props: {
     extendedText: {
       type: String,
-      required: true,
+      required: true
     },
     ecgResult: {
-      type: Object,
+      type: Object
     },
     hospitalId: {
       type: Number,
-      required: true,
+      required: true
     },
     isShowViewMore: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   data() {
     return {
@@ -137,36 +137,36 @@ export default {
         datasets: [
           {
             label: 'Title',
-            data: [45, 55, 48, 35, 12],
-          },
-        ],
+            data: [45, 55, 48, 35, 12]
+          }
+        ]
       },
       ecgTypes: [],
       ecgValues: [],
-      hospitalDetailData: [],
+      hospitalDetailData: []
     }
   },
   watch: {
-    '$store.state.isSwarmLearningDone': function (newValue) {
+    '$store.state.isSwarmLearningDone': function(newValue) {
       if (newValue) {
         if (!isEmpty(this.$store.getters.getHospitalById(0))) {
           for (let i = 1; i <= 5; i++) {
             const hospitalData = this.$store.getters.getHospitalById(i)
             this.hospitalDetailData.push({
               hospitalName: hospitalData.name,
-              resultList: hospitalData?.ecgResult?.result,
+              resultList: hospitalData?.ecgResult?.result
             })
           }
         }
       }
     },
-    hospitalId: function (newVal, oldVal) {
+    hospitalId: function(newVal, oldVal) {
       const hospitalData = this.$store.getters.getHospitalById(newVal)
       this.hospitalDetailData.push({
         hospitalName: hospitalData.name,
-        resultList: hospitalData?.ecgResult?.result,
+        resultList: hospitalData?.ecgResult?.result
       })
-    },
+    }
   },
   async mounted() {
     if (this.$store.state.isSwarmLearningDone) {
@@ -176,7 +176,7 @@ export default {
           const hospitalData = this.$store.getters.getHospitalById(i)
           this.hospitalDetailData.push({
             hospitalName: hospitalData.name,
-            resultList: hospitalData?.ecgResult?.result,
+            resultList: hospitalData?.ecgResult?.result
           })
         }
       }
@@ -185,8 +185,8 @@ export default {
   methods: {
     onClickViewDetails() {
       this.isCollapsed = !this.isCollapsed
-    },
-  },
+    }
+  }
 }
 </script>
 
