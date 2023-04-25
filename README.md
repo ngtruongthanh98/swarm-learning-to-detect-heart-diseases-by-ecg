@@ -21,3 +21,41 @@ Frontend - NuxtJS
 ![Analyze ECG page](https://iili.io/HhBmRmg.png "Analyze page").
 
 ![Hospital page](https://iili.io/HhBmM7t.png "Hospital page").
+
+
+# How to run the project?
+## Frontend
+- Install docker, follow the instruction in the directory /ecg-portal/docker-instruction.md
+- Or running local, required: node v16.15.0 +
+```
+cd ecg-portal
+```
+
+```
+yarn
+```
+
+```
+yarn serve
+```
+
+- Access http://localhost:3000
+
+## Backend
+Required: Install all packages which use by models
+- Install python3
+- Install joblib version 1.2.0
+- tensorflow==2.12.0
+- numpy
+- sklearn
+- pandas
+
+```
+cd backend
+```
+
+```
+python3 CNN_prod.py
+```
+
+Backend will run on http://localhost:5000
