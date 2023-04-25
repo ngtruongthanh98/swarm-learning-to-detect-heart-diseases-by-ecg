@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "a2e6b91b-ef05-4598-8ce7-aa3a9386e347",
+		"name": "CNN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18961885"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:5000/CNN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Documents/Master/Big data/swarm-learning-to-detect-heart-diseases-by-ecg/CNN/110835.asc"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/CNN",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"CNN"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
