@@ -5,8 +5,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 import joblib
 
-num_path = '/home/watermelon/pgs221/BigData/Numpy'
-model_path = '/home/watermelon/pgs221/BigData/Model'
+# num_path = '/home/watermelon/pgs221/BigData/Numpy'
+# model_path = '/home/watermelon/pgs221/BigData/Model'
+num_path = '/home/thanhnt26/Downloads/Numpy'
+model_path = '/home/thanhnt26/Desktop/swarm-learning-to-detect-heart-diseases-by-ecg/backend/agent/models'
 
 
 for hos in os.listdir(num_path):
