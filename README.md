@@ -9,10 +9,9 @@ Swarm learning is a novel approach to machine learning that utilizes decentraliz
 
 The project's tech stack includes:
 
-- Model ANN (Python)
-- Backend: Golang
+- Model CNN, SVM (Python)
+- Backend: Flask
 - Frontend: NuxtJS (VueJS)
-- Cloud service: GCP (or AWS)
 
 By leveraging the power of swarm learning and big data, we aim to create a model that can accurately detect heart disease and improve patient outcomes.
 
