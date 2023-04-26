@@ -55,7 +55,7 @@ cd backend
 ```
 
 ```
-python3 CNN_prod.py
+python3 main.py
 ```
 
 Backend will run on http://localhost:5000
